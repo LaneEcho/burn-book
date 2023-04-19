@@ -7,12 +7,27 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #393939;
-  font-family: 'Futura', sans-serif;
-  background-color: #ff0078;
 }
 
-/* header {
-  font-family: 'Ransom', 'Futura', sans-serif;
+body {
+  background-color: #f2a0dc;
+  font-family: 'Futura', sans-serif;
+  font-size: 18px;
+}
+
+header {
   background-color: #ff0078;
-} */
+  text-align: center;
+  height: 10vh;
+}
+
+h1 {
+  font-family: 'Ransom', 'Futura', sans-serif;
+  font-size: 4em;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
