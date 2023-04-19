@@ -7,6 +7,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './dist'),
   },
+
   plugins: [
     new HTMLWebpackPlugin({
       title: 'Development',
@@ -24,6 +25,14 @@ module.exports = {
             presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
+      },
+      {
+        test: /css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.ttf$/i,
+        type: 'asset/resource',
       },
     ],
   },
