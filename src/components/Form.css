@@ -1,0 +1,35 @@
+.say-something {
+  width: auto;
+  color: #22292f;
+  padding: 5px;
+  text-align: center;
+  border: 2px solid #ff0078;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+form {
+  margin-top: 10px;
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 10px;
+  border: 1px solid #ff0078;
+  outline: none;
+  text-align: center;
+}
+
+.post-item {
+  font-family: 'handwriting', 'Futura', sans-serif;
+  font-size: 35px;
+  color: #22292f;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ff0078;
+  margin-top: 10px;
+}
