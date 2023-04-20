@@ -66,6 +66,7 @@ textarea {
   padding: 10px;
   border: 1px solid #ff0078;
   outline: none;
+  text-align: center;
 }
 
 .post-item {
