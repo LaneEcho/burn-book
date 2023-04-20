@@ -3,6 +3,11 @@
   src: url(design/Ransom.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'handwriting';
+  src: url(design/handwriting.ttf) format('truetype');
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +23,7 @@ body {
 header {
   background-color: #ff0078;
   text-align: center;
-  height: 10vh;
+  margin-bottom: 5px;
 }
 
 h1 {
@@ -27,7 +32,27 @@ h1 {
 }
 
 #app {
+  background-color: #fff;
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-content: center;
+  padding: 5px;
+}
+
+.say-something {
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ff0078;
+}
+
+.post-item {
+  font-family: 'handwriting', 'Futura', sans-serif;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ff0078;
+  margin-top: 10px;
 }

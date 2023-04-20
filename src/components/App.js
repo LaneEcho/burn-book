@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
+import FormComponent from './Form';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="input-form">
-        <h2>Say Something Behind Your Friend's Back</h2>
-      </div>
-    );
-  }
+// class App extends Component {
+//   render() {
+//     return (
+//       <div className="form-Component">
+//         <FormComponent />
+//       </div>
+//     );
+//   }
+// }
+
+function App(props) {
+  return (
+    <div className="form-Component">
+      <FormComponent />
+    </div>
+  );
 }
 
 export default App;
