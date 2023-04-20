@@ -21,6 +21,7 @@ body {
 }
 
 header {
+  color: #22292f;
   background-color: #ff0078;
   text-align: center;
   margin-bottom: 5px;
@@ -44,15 +45,61 @@ h1 {
 }
 
 .say-something {
+  color: #22292f;
   padding: 5px;
   text-align: center;
   border: 1px solid #ff0078;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+form {
+  margin-top: 10px;
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 10px;
+  border: 1px solid #ff0078;
+  outline: none;
 }
 
 .post-item {
   font-family: 'handwriting', 'Futura', sans-serif;
+  font-size: 30px;
+  color: #22292f;
   padding: 5px;
   text-align: center;
   border: 1px solid #ff0078;
   margin-top: 10px;
+}
+
+button {
+  border: none;
+  font-family: 'Futura', sans-serif;
+  font-weight: 100;
+  color: #fff;
+  padding: 5px;
+  background-color: #ff0078;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #ff0078;
+  border: 1px solid #ff0078;
+  padding: 4px;
+}
+
+input {
+  border: 1px solid #ff0078;
+  padding: 5px;
+  display: block;
 }
