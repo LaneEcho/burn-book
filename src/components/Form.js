@@ -46,7 +46,7 @@ function FormComponent() {
           ></textarea>
           {/* <input type="file"></input> */}
           <div id="button-id">
-            <button className="button" type="submit">
+            <button type="submit" className="submit-button">
               submit
             </button>
           </div>
