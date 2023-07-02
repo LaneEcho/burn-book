@@ -4,7 +4,7 @@
   "description": "For when you want to say something mean behind a girl's back.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
+    "dev": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production"
   },
   "repository": {
