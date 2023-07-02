@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Ransom';
-  src: url(design/Ransom.ttf) format('truetype');
+  src: url(assets/Ransom.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'handwriting';
-  src: url(design/handwriting.ttf) format('truetype');
+  src: url(assets/handwriting.ttf) format('truetype');
 }
 
 * {
