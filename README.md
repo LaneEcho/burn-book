@@ -61,6 +61,23 @@ _Coming soon_!
 
 <br>
 
+## To Do
+
+| Feature                                 | Status |
+| --------------------------------------- | ------ |
+| CSS to SASS                             | ⏳     |
+| PostgreSQL database                     | ⏳     |
+| Write server with Express               | ⏳     |
+| Convert to TypeScript                   | ⏳     |
+| Testing w/ Jest + React Testing Library | ⏳     |
+| Image uploads                           | ⏳     |
+| And more...                             | ⏳     |
+
+- ✅ = Ready to use
+- ⏳ = In progress
+
+<br>
+
 ## License
 
 Distributed under the MIT License.
