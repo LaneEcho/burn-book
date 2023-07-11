@@ -1,12 +1,4 @@
-@font-face {
-  font-family: 'Ransom';
-  src: url(assets/Ransom.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'handwriting';
-  src: url(assets/handwriting.ttf) format('truetype');
-}
+@import 'variables';
 
 * {
   margin: 0;
