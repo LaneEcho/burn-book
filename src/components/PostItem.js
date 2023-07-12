@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './PostItem.css';
+import './postItem.scss';
 
 function PostItem(props) {
   return (

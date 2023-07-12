@@ -1,11 +1,8 @@
+@import 'variables';
+
 @font-face {
   font-family: 'Ransom';
   src: url(assets/Ransom.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'handwriting';
-  src: url(assets/handwriting.ttf) format('truetype');
 }
 
 * {
@@ -15,25 +12,25 @@
 }
 
 body {
-  background-color: #f2a0dc;
-  font-family: 'Futura', sans-serif;
+  background-color: $light-pink;
+  font-family: $default-font;
   font-size: 18px;
 }
 
 header {
   color: #22292f;
-  background-color: #ff0078;
+  background-color: $hot-pink;
   text-align: center;
   margin-bottom: 5px;
 }
 
 h1 {
-  font-family: 'Ransom', 'Futura', sans-serif;
+  font-family: 'Ransom', $default-font;
   font-size: 4em;
 }
 
 #app {
-  background-color: #fff;
+  background-color: $primary-white;
   width: 50%;
   margin-left: auto;
   margin-right: auto;
@@ -46,11 +43,11 @@ h1 {
 
 .submit-button {
   border: none;
-  font-family: 'Futura', sans-serif;
+  font-family: $default-font;
   font-weight: 100;
-  color: #fff;
+  color: $primary-white;
   padding: 5px;
-  background-color: #ff0078;
+  background-color: $hot-pink;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -58,9 +55,9 @@ h1 {
 }
 
 .submit-button:hover {
-  background-color: #fff;
-  color: #ff0078;
-  border: 1px solid #ff0078;
+  background-color: $primary-white;
+  color: $hot-pink;
+  border: 1px solid $hot-pink;
   padding: 4px;
   cursor: pointer;
 }
