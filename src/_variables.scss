@@ -1,18 +1,12 @@
 @use 'sass:color';
 
-// @font-face {
-//   font-family: 'Ransom';
-//   src: url(assets/Ransom.ttf) format('truetype');
-// }
-
-// @font-face {
-//   font-family: 'handwriting';
-//   src: url(assets/handwriting.ttf) format('truetype');
-// }
-
-// $title-font: 'Ransom', 'Futura', sans-serif;
-// $burn-font: 'handwriting', 'Futura', sans-serif;
+// typography
 $default-font: 'Futura', sans-serif;
+
+$light: 300;
+$normal: 400;
+$semibold: 500;
+$bold: 700;
 
 // colors
 $hot-pink: #ff0078;
@@ -22,4 +16,4 @@ $dark-pink: #d93d76;
 $darkest-pink: #8c0f31;
 $red: #d92332;
 
-$primary-white: #fffaff;
+$primary-white: #fcfafc;

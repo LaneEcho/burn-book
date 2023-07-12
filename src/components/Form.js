@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PostItem from './postItem';
-import './Form.css';
+import './form.scss';
 
 function FormComponent() {
   // initialize state

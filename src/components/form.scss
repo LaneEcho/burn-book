@@ -1,9 +1,16 @@
+@import '../variables';
+
+@font-face {
+  font-family: 'handwriting';
+  src: url(../assets/handwriting.ttf) format('truetype');
+}
+
 .say-something {
   width: auto;
   color: #22292f;
   padding: 5px;
   text-align: center;
-  border: 2px solid #ff0078;
+  border: 2px solid $hot-pink;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,17 +26,18 @@ textarea {
   width: 100%;
   resize: vertical;
   padding: 10px;
-  border: 1px solid #ff0078;
+  border: 1px solid $hot-pink;
   outline: none;
   text-align: center;
+  background-color: $primary-white;
 }
 
 .post-item {
-  font-family: 'handwriting', 'Futura', sans-serif;
+  font-family: 'handwriting', $default-font;
   font-size: 35px;
   color: #22292f;
   padding: 5px;
   text-align: center;
-  border: 1px solid #ff0078;
+  border: 1px solid $hot-pink;
   margin-top: 10px;
 }
