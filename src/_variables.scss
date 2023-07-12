@@ -1,17 +1,17 @@
 @use 'sass:color';
 
-@font-face {
-  font-family: 'Ransom';
-  src: url(assets/Ransom.ttf) format('truetype');
-}
+// @font-face {
+//   font-family: 'Ransom';
+//   src: url(assets/Ransom.ttf) format('truetype');
+// }
 
-@font-face {
-  font-family: 'handwriting';
-  src: url(assets/handwriting.ttf) format('truetype');
-}
+// @font-face {
+//   font-family: 'handwriting';
+//   src: url(assets/handwriting.ttf) format('truetype');
+// }
 
-$title-font: 'Ransom', 'Futura', sans-serif;
-$burn-font: 'handwriting', 'Futura', sans-serif;
+// $title-font: 'Ransom', 'Futura', sans-serif;
+// $burn-font: 'handwriting', 'Futura', sans-serif;
 $default-font: 'Futura', sans-serif;
 
 // colors

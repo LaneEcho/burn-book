@@ -1,5 +1,10 @@
 @import 'variables';
 
+@font-face {
+  font-family: 'Ransom';
+  src: url(assets/Ransom.ttf) format('truetype');
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -20,7 +25,7 @@ header {
 }
 
 h1 {
-  font-family: $title-font;
+  font-family: 'Ransom', $default-font;
   font-size: 4em;
 }
 

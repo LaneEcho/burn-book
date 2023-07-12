@@ -1,4 +1,4 @@
-// @import '../variables';
+@import '../variables';
 
 h4 {
   margin-top: 10px;
@@ -6,12 +6,12 @@ h4 {
 
 .remove-button {
   border: none;
-  font-family: 'Futura', sans-serif;
+  font-family: $default-font;
   font-size: 10px;
   font-weight: 100;
-  color: #ff0078;
+  color: $hot-pink;
   padding: 5px;
-  background-color: #fff;
+  background-color: $primary-white;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -19,15 +19,15 @@ h4 {
 }
 
 .remove-button:hover {
-  background-color: #fff;
-  color: #ff0078;
-  border: 1px solid #ff0078;
+  background-color: $primary-white;
+  color: $hot-pink;
+  border: 1px solid $hot-pink;
   padding: 4px;
   cursor: pointer;
 }
 
 input {
-  border: 1px solid #ff0078;
+  border: 1px solid $hot-pink;
   padding: 5px;
   display: block;
 }
