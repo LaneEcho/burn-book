@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development --open --hot",
+    "start": "nodemon src/server/server.js",
     "build": "webpack --mode production"
   },
   "repository": {
@@ -12,7 +13,7 @@
     "url": "git+https://github.com/LaneEcho/burn-book.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Lane Hamilton",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/LaneEcho/burn-book/issues"
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/LaneEcho/burn-book#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "pg": "^8.11.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -30,6 +32,7 @@
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.1",
+    "nodemon": "^3.0.1",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.2",
