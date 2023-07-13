@@ -1,0 +1,12 @@
+@import '../variables';
+@import '../mixins';
+
+p {
+  padding: $standard;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.remove-button {
+  @include button($hot-pink, $primary-white);
+}

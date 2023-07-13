@@ -1,0 +1,41 @@
+@import 'variables';
+
+@font-face {
+  font-family: 'Ransom';
+  src: url(assets/Ransom.ttf) format('truetype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $light-pink;
+  font-family: $default-font;
+  font-size: 18px;
+}
+
+header {
+  color: $primary-black;
+  background-color: $hot-pink;
+  text-align: center;
+  margin-bottom: $standard;
+  h1 {
+    font-family: 'Ransom', $default-font;
+    font-size: 4em;
+  }
+}
+
+#app {
+  background-color: $primary-white;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex inline-block;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  padding: $standard;
+}
