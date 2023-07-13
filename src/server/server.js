@@ -5,7 +5,6 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-// root endpoint: is '/'
 // get request to '/' --> serve index.html
 
 app.get('/', (req, res) => {
@@ -19,5 +18,3 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });
-
-// node src/server/server.js
