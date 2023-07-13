@@ -65,7 +65,7 @@ _Coming soon_!
 
 | Feature                                 | Status |
 | --------------------------------------- | ------ |
-| CSS to SASS                             | ⏳     |
+| CSS to SASS                             | ✅     |
 | PostgreSQL database                     | ⏳     |
 | Write server with Express               | ⏳     |
 | Convert to TypeScript                   | ⏳     |
