@@ -1,4 +1,5 @@
 @import '../variables';
+@import '../mixins';
 
 @font-face {
   font-family: 'handwriting';
@@ -40,4 +41,8 @@ textarea {
   text-align: center;
   border: 1px solid $hot-pink;
   margin-top: 10px;
+}
+
+.submit-button {
+  @include button($hot-pink, $primary-white);
 }
