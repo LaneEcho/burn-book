@@ -1,0 +1,29 @@
+@mixin button($bg-color, $text-color) {
+  border: 1px solid;
+  font-family: $default-font;
+  color: $text-color;
+  padding: 5px 15px;
+  background-color: $bg-color;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: $standard;
+
+  &:hover {
+    background-color: $text-color;
+    color: $bg-color;
+    border: 1px solid $bg-color;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: none !important;
+    border-color: $dark-pink;
+    box-shadow: 0 0 5px $dark-pink;
+  }
+}
