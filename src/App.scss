@@ -21,7 +21,7 @@ header {
   color: $primary-black;
   background-color: $hot-pink;
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: $standard;
   h1 {
     font-family: 'Ransom', $default-font;
     font-size: 4em;
@@ -37,5 +37,5 @@ header {
   flex-direction: column;
   align-items: center;
   align-content: center;
-  padding: 5px;
+  padding: $standard;
 }
