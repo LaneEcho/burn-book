@@ -17,15 +17,15 @@ app.post('/getBurns', burnController.postBurn, (req, res) =>
   res.status(200).json(res.locals.result)
 );
 
-// get request to '/getBurns' --> respond with all the burns
-app.get('/getBurns', burnController.getBurns, (req, res) =>
-  res.status(200).json(res.locals.result)
-);
+// // get request to '/getBurns' --> respond with all the burns
+// app.get('/getBurns', burnController.getBurns, (req, res) =>
+//   res.status(200).json(res.locals.result)
+// );
 
-// delete router --> delete the burn
-app.delete('/getBurns', burnController.deleteBurn, (req, res) => {
-  res.status(200).json(res.locals.result);
-});
+// // delete router --> delete the burn
+// app.delete('/getBurns', burnController.deleteBurn, (req, res) => {
+//   res.status(200).json(res.locals.result);
+// });
 
 // global error handler
 app.use((err, req, res, next) => {
