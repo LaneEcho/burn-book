@@ -38,10 +38,10 @@ module.exports = {
   },
   // COME BACK TO THIS IF NEEDED
   devServer: {
-    // static: {
-    //   directory: path.resolve(__dirname, 'dist'),
-    //   publicPath: '/build'
-    // },
+    static: {
+      directory: path.resolve(__dirname, 'dist'),
+      publicPath: '/build',
+    },
     compress: true,
     port: 8080,
     proxy: {

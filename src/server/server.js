@@ -27,6 +27,9 @@ app.post('/getBurns', burnController.postBurn, (req, res) =>
 //   res.status(200).json(res.locals.result);
 // });
 
+// Error Handling- catch all
+app.use((req, res) => res.sendStatus(404));
+
 // global error handler
 app.use((err, req, res, next) => {
   const defaultErr = {
