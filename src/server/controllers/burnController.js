@@ -6,7 +6,7 @@ const burnController = {};
 burnController.postBurn = async (req, res, next) => {
   const newBurn = req.body.message;
   // query to just add message to database, expand for usernames in future
-  const query = `INSERT INTO burnBook (message)
+  const query = `INSERT INTO burn_book (message)
       VALUES ($1)
       RETURNING *;`;
   const values = [newBurn];
@@ -28,7 +28,7 @@ burnController.postBurn = async (req, res, next) => {
 
 // getBurn retrieves all burns from database
 burnController.getBurns = async (req, res, next) => {
-  const query = 'SELECT * FROM burnBook;';
+  const query = 'SELECT * FROM burn_book ORDER BY id ASC;';
 
   try {
     const result = await db.query(query);
@@ -48,7 +48,7 @@ burnController.getBurns = async (req, res, next) => {
 burnController.deleteBurn = async (req, res, next) => {
   const id = req.body.id;
 
-  const query = 'DELETE FROM burnBook WHERE id = $1 RETURNING *;';
+  const query = 'DELETE FROM burn_book WHERE id = $1 RETURNING *;';
 
   try {
     const result = await db.query(query, [id]);
@@ -58,6 +58,29 @@ burnController.deleteBurn = async (req, res, next) => {
   } catch (err) {
     return next({
       log: `Express error in deleteBurn middleware: ${err}`,
+      status: 500,
+      message: { err: 'An error occurred' },
+    });
+  }
+};
+
+// updateBurn updates an entry to make it meaner
+burnController.updateBurn = async (req, res, next) => {
+  const id = req.params.id;
+  const updatedData = req.body;
+
+  console.log('id', id);
+
+  const query = 'UPDATE burn_book SET message = $1 WHERE id = $2 RETURNING *;';
+
+  try {
+    const result = await db.query(query, [id]);
+    res.locals.result = result.rows[0];
+    console.log('res locals result', res.locals.result);
+    return next();
+  } catch (err) {
+    return next({
+      log: `Express error in updateBurn middleware: ${err}`,
       status: 500,
       message: { err: 'An error occurred' },
     });
