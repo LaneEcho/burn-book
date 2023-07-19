@@ -7,6 +7,9 @@ const PORT = 3000;
 
 const burnController = require('./controllers/burnController');
 
+// parse incoming requests
+app.use(express.json());
+
 // get request to '/' --> serve index.html
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));

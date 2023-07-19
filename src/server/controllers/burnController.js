@@ -5,14 +5,14 @@ const burnController = {};
 // post burn creates a new burn entry in database
 burnController.postBurn = async (req, res, next) => {
   const newBurn = req.body.message;
-  console.log('New burn', newBurn);
-
-  const query = `INSERT INTO burnBook (name, message)
-      VALUES ($1. $2)
+  // query to just add message to database, expand for usernames in future
+  const query = `INSERT INTO burnBook (message)
+      VALUES ($1)
       RETURNING *;`;
   const values = [newBurn];
   try {
-    const result = await db.query(query, values); //result is an id val
+    //result is an id val
+    const result = await db.query(query, values);
     res.locals.result = result.rows[0].id;
     // console log to see result
     console.log('res locals result', res.locals.result);
