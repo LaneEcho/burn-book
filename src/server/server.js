@@ -15,20 +15,23 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
 
-// post request for new burn
+// post request for new entry in Burn Book
 app.post('/getBurns', burnController.postBurn, (req, res) =>
   res.status(200).json(res.locals.result)
 );
 
-// // get request to '/getBurns' --> respond with all the burns
-// app.get('/getBurns', burnController.getBurns, (req, res) =>
-//   res.status(200).json(res.locals.result)
-// );
+// get request to retireve all entries
+app.get('/getBurns', burnController.getBurns, (req, res) =>
+  res.status(200).json(res.locals.result)
+);
 
-// // delete router --> delete the burn
+// // delete an entry
 // app.delete('/getBurns', burnController.deleteBurn, (req, res) => {
 //   res.status(200).json(res.locals.result);
 // });
+
+// update an entry
+// coming soon
 
 // Error Handling- catch all
 app.use((req, res) => res.sendStatus(404));

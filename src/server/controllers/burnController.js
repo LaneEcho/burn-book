@@ -27,6 +27,22 @@ burnController.postBurn = async (req, res, next) => {
 };
 
 // getBurn retrieves all burns from database
+burnController.getBurns = async (req, res, next) => {
+  const query = 'SELECT * FROM burnBook;';
+
+  try {
+    const result = await db.query(query);
+    res.locals.result = result.rows;
+    console.log('res locals result', res.locals.result);
+    return next();
+  } catch (err) {
+    return next({
+      log: `Express error in getBurns middleware: ${err}`,
+      status: 500,
+      message: { err: 'An error occurred' },
+    });
+  }
+};
 
 // deleteBurn removes a burn from database
 
