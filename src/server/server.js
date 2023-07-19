@@ -26,9 +26,9 @@ app.get('/getBurns', burnController.getBurns, (req, res) =>
 );
 
 // // delete an entry
-// app.delete('/getBurns', burnController.deleteBurn, (req, res) => {
-//   res.status(200).json(res.locals.result);
-// });
+app.delete('/getBurns', burnController.deleteBurn, (req, res) => {
+  res.status(200).json(res.locals.result);
+});
 
 // update an entry
 // coming soon

@@ -45,5 +45,23 @@ burnController.getBurns = async (req, res, next) => {
 };
 
 // deleteBurn removes a burn from database
+burnController.deleteBurn = async (req, res, next) => {
+  const id = req.body.id;
+
+  const query = 'DELETE FROM burnBook WHERE id = $1 RETURNING *;';
+
+  try {
+    const result = await db.query(query, [id]);
+    res.locals.result = result.rows[0];
+    console.log('res locals result', res.locals.result);
+    return next();
+  } catch (err) {
+    return next({
+      log: `Express error in deleteBurn middleware: ${err}`,
+      status: 500,
+      message: { err: 'An error occurred' },
+    });
+  }
+};
 
 module.exports = burnController;
