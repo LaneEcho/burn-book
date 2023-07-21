@@ -26,7 +26,7 @@ What if The Plastics had an app for their Burn Book, instead of a physical book?
 
 1. Fork and close this repository to your local machine
 2. Install NPM packages: `npm install`
-3. _Coming Soon:_ Run `npm start` to spin up the server
+3. Run `npm run start` to spin up the server
 4. Run `npm run dev` to start up the application
 5. Navigate to http://localhost:8080 in your browser
 6. Commit girl on girl crime ✨
@@ -68,6 +68,7 @@ _Coming soon_!
 | CSS to SASS                             | ✅     |
 | PostgreSQL database                     | ⏳     |
 | Write server with Express               | ⏳     |
+| Full CRUD Functionality                 | ⏳     |
 | Convert to TypeScript                   | ⏳     |
 | Testing w/ Jest + React Testing Library | ⏳     |
 | Image uploads                           | ⏳     |
