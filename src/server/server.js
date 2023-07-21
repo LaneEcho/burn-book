@@ -31,11 +31,9 @@ app.delete('/getBurns', burnController.deleteBurn, (req, res) => {
 });
 
 // update an entry
-app.put('/getBurns/:id'),
-  burnController.updateBurn,
-  (req, res) => {
-    res.status(200).json(res.locals.result);
-  };
+app.put('/getBurns/:id', burnController.updateBurn, (req, res) => {
+  res.status(200).json(res.locals.result);
+});
 
 // Error Handling- catch all
 app.use((req, res) => res.sendStatus(404));

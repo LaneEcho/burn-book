@@ -14,8 +14,6 @@ burnController.postBurn = async (req, res, next) => {
     //result is an id val
     const result = await db.query(query, values);
     res.locals.result = result.rows[0].id;
-    // console log to see result
-    console.log('res locals result', res.locals.result);
     return next();
   } catch (err) {
     return next({
@@ -33,7 +31,6 @@ burnController.getBurns = async (req, res, next) => {
   try {
     const result = await db.query(query);
     res.locals.result = result.rows;
-    console.log('res locals result', res.locals.result);
     return next();
   } catch (err) {
     return next({
@@ -53,7 +50,6 @@ burnController.deleteBurn = async (req, res, next) => {
   try {
     const result = await db.query(query, [id]);
     res.locals.result = result.rows[0];
-    console.log('res locals result', res.locals.result);
     return next();
   } catch (err) {
     return next({
@@ -66,17 +62,14 @@ burnController.deleteBurn = async (req, res, next) => {
 
 // updateBurn updates an entry to make it meaner
 burnController.updateBurn = async (req, res, next) => {
+  const updatedData = req.body.message;
   const id = req.params.id;
-  const updatedData = req.body;
-
-  console.log('id', id);
 
   const query = 'UPDATE burn_book SET message = $1 WHERE id = $2 RETURNING *;';
 
   try {
-    const result = await db.query(query, [id]);
+    const result = await db.query(query, [updatedData, id]);
     res.locals.result = result.rows[0];
-    console.log('res locals result', res.locals.result);
     return next();
   } catch (err) {
     return next({
