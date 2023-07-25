@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PostItem from '../postItem/postItem.jsx';
 import './form.scss';
 
 function FormComponent() {
   // initialize state
   const [comment, setComment] = useState([]);
+
+  // state for fetching data
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // load inital burns upon page load
+  useEffect(() => {
+    fetch(`/getBurns`)
+      .then((response) => response.json())
+      .then((usefulData) => {
+        console.log(usefulData);
+        setLoading(false);
+        setData(usefulData);
+      })
+      .catch((err) => {
+        console.log('Error in getBurns: ', err);
+      });
+  }, []);
 
   //   function that hopefully adds form input to state - event handler
   const handleSubmit = (event) => {
@@ -25,14 +44,20 @@ function FormComponent() {
     console.log('state: ', comment);
   };
 
+  // populate with burns
   const allItems = [];
-  // iterate to create a new <PostItem > component for each comment -new comments to the front
-  for (let i = 0; i < comment.length; i++) {
-    allItems.unshift(
-      <PostItem comment={comment[i]} key={i} onDelete={() => handleDelete(i)} />
-    );
+  if (!loading && data !== null) {
+    // iterate to create a new <PostItem > component for each comment -new comments to the front
+    for (let i = 0; i < data.length; i++) {
+      allItems.unshift(
+        <PostItem
+          comment={data[i].message}
+          key={i}
+          onDelete={() => handleDelete(i)}
+        />
+      );
+    }
   }
-
   return (
     <div>
       <div className="say-something">
