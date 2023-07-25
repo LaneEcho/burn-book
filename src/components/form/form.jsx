@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PostItem from './postItem';
+import PostItem from '../postItem/postItem.jsx';
 import './form.scss';
 
 function FormComponent() {
