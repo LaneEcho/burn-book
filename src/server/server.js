@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 // post request for new entry in Burn Book
 app.post('/getBurns', burnController.postBurn, (req, res) =>
-  res.status(200).json(res.locals.result)
+  res.status(201).json(res.locals.result)
 );
 
 // get request to retireve all entries
@@ -27,7 +27,7 @@ app.get('/getBurns', burnController.getBurns, (req, res) =>
 
 // // delete an entry
 app.delete('/getBurns', burnController.deleteBurn, (req, res) => {
-  res.status(200).json(res.locals.result);
+  res.status(204).json(res.locals.result);
 });
 
 // update an entry

@@ -66,8 +66,8 @@ _Coming soon_!
 | Feature                                 | Status |
 | --------------------------------------- | ------ |
 | CSS to SASS                             | ✅     |
-| PostgreSQL database                     | ⏳     |
-| Write server with Express               | ⏳     |
+| PostgreSQL database                     | ✅     |
+| Write server with Express               | ✅     |
 | Full CRUD Functionality                 | ⏳     |
 | Convert to TypeScript                   | ⏳     |
 | Testing w/ Jest + React Testing Library | ⏳     |
