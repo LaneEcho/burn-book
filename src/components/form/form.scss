@@ -23,13 +23,14 @@ form {
   width: 100%;
 }
 
-textarea {
+input {
   width: 100%;
   resize: vertical;
   padding: 10px;
   border: 1px solid $hot-pink;
   text-align: center;
   background-color: $primary-white;
+  overflow: scroll;
   &:focus {
     outline: none !important;
     border-color: $dark-pink;
@@ -49,4 +50,8 @@ textarea {
 
 .submit-button {
   @include button($hot-pink, $primary-white);
+}
+
+.loading {
+  font-family: 'handwriting', $default-font;
 }
