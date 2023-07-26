@@ -44,12 +44,12 @@ function FormComponent() {
     console.log('state: ', comment);
   };
 
-  // populate with burns
+  // populate with burns after fetch is successful
   const allItems = [];
   if (!loading && data !== null) {
-    // iterate to create a new <PostItem > component for each comment -new comments to the front
+    // iterate to create a new <PostItem > component for each entry
     for (let i = 0; i < data.length; i++) {
-      allItems.unshift(
+      allItems.push(
         <PostItem
           comment={data[i].message}
           key={i}
