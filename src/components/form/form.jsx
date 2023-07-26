@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import useFetch from '../../hooks/useFetch.jsx';
-import PostItem from '../postItem/postItem.jsx';
 import './form.scss';
 
 function FormComponent() {
   // initialize state
-  const [comment, setComment] = useState([]);
+  const [comment, setComment] = useState(null);
 
-  // initial fetch of data to be displayed
-  const { data, loading, error } = useFetch('/getBurns');
-
-  //   function that hopefully adds form input to state - event handler
+  // add an entry to database
   const handleSubmit = (event) => {
     event.preventDefault();
     const newComment = event.target.elements.comment.value;
@@ -29,40 +25,23 @@ function FormComponent() {
     console.log('state: ', comment);
   };
 
-  // populate with burns after fetch is successful
-  const allItems = [];
-  if (!loading && data !== null) {
-    // iterate to create a new <PostItem > component for each entry
-    for (let i = 0; i < data.length; i++) {
-      allItems.push(
-        <PostItem
-          comment={data[i].message}
-          key={i}
-          onDelete={() => handleDelete(i)}
-        />
-      );
-    }
-  }
   return (
-    <div>
-      <div className="say-something">
-        <h2>Say Something Behind Your Friend's Back</h2>
-        <form onSubmit={handleSubmit} id="comment-form">
-          <textarea
-            type="text"
-            id="comment"
-            name="comment"
-            placeholder="You let it out, honey. Put it in the book."
-          ></textarea>
-          {/* <input type="file"></input> */}
-          <div id="button-id">
-            <button type="submit" className="submit-button">
-              submit
-            </button>
-          </div>
-        </form>
-      </div>
-      {allItems}
+    <div className="say-something">
+      <h2>Say Something Behind Your Friend's Back</h2>
+      <form onSubmit={handleSubmit} id="comment-form">
+        <textarea
+          type="text"
+          id="comment"
+          name="comment"
+          placeholder="You let it out, honey. Put it in the book."
+        ></textarea>
+        {/* <input type="file"></input> */}
+        <div id="button-id">
+          <button type="submit" className="submit-button">
+            submit
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

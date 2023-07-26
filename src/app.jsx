@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import FormComponent from './components/form/form.jsx';
+import Container from './components/container/container.jsx';
 
 function App() {
   return (
     <div className="form-Component">
-      <FormComponent />
+      <Container />
     </div>
   );
 }

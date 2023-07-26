@@ -13,7 +13,7 @@ function useFetch(url) {
     fetch(url)
       .then((response) => response.json())
       .then((usefulData) => {
-        console.log(usefulData);
+        // console.log(usefulData);
         setLoading(false);
         setData(usefulData);
       })
