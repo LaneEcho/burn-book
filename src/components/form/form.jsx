@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import useFetch from '../../hooks/useFetch.jsx';
 import PostItem from '../postItem/postItem.jsx';
 import './form.scss';
 
@@ -6,24 +7,7 @@ function FormComponent() {
   // initialize state
   const [comment, setComment] = useState([]);
 
-  // state for fetching data
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  // load inital burns upon page load
-  useEffect(() => {
-    fetch(`/getBurns`)
-      .then((response) => response.json())
-      .then((usefulData) => {
-        console.log(usefulData);
-        setLoading(false);
-        setData(usefulData);
-      })
-      .catch((err) => {
-        console.log('Error in getBurns: ', err);
-      });
-  }, []);
+  const { data, loading, error } = useFetch('/getBurns');
 
   //   function that hopefully adds form input to state - event handler
   const handleSubmit = (event) => {
