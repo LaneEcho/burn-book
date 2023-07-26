@@ -26,7 +26,7 @@ burnController.postBurn = async (req, res, next) => {
 
 // getBurn retrieves all burns from database
 burnController.getBurns = async (req, res, next) => {
-  const query = 'SELECT * FROM burn_book ORDER BY id ASC;';
+  const query = 'SELECT * FROM burn_book ORDER BY id DESC;';
 
   try {
     const result = await db.query(query);
