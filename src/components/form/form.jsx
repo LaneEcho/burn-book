@@ -7,6 +7,7 @@ function FormComponent() {
   // initialize state
   const [comment, setComment] = useState([]);
 
+  // initial fetch of data to be displayed
   const { data, loading, error } = useFetch('/getBurns');
 
   //   function that hopefully adds form input to state - event handler

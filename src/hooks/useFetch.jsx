@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+// custom hook to fetch data once on page load via useEffect hook
+
 function useFetch(url) {
   // state for fetching data
   const [data, setData] = useState(null);
