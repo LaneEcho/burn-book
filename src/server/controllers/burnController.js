@@ -5,6 +5,7 @@ const burnController = {};
 // post burn creates a new burn entry in database
 burnController.postBurn = async (req, res, next) => {
   const newBurn = req.body.message;
+  console.log('req body message', req.body.message);
   // query to just add message to database, expand for usernames in future
   const query = `INSERT INTO burn_book (message)
       VALUES ($1)

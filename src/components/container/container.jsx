@@ -8,6 +8,7 @@ function Container() {
   const { data, loading, error } = useFetch('/getBurns');
 
   // populate with burns after fetch is successful
+  // is there a way to make this faster?
   const allItems = [];
   if (!loading && data !== null) {
     // iterate to create a new <PostItem > component for each entry
@@ -16,6 +17,7 @@ function Container() {
         <PostItem
           comment={data[i].message}
           key={i}
+          id={data[i].id}
           onDelete={() => handleDelete(i)}
         />
       );
