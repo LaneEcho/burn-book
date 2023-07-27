@@ -51,6 +51,8 @@ function FormComponent() {
     return <div className="loading">Loading...</div>; // Render a loading state while waiting for the Promise to resolve
   }
 
+  // also may need to fetch upon completion of post
+
   return (
     <div className="say-something">
       <h2>Say Something Behind Your Friend's Back</h2>
