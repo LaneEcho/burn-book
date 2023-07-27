@@ -1,67 +1,72 @@
 import React, { useState, useEffect } from 'react';
 import useFetch from '../../hooks/useFetch.jsx';
-import PostItem from '../postItem/postItem.jsx';
 import './form.scss';
 
 function FormComponent() {
-  // initialize state
-  const [comment, setComment] = useState([]);
+  // initialize state - comment is empty string
+  const [comment, setComment] = useState('');
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false); // Set loading to false by default
 
-  const { data, loading, error } = useFetch('/getBurns');
-
-  //   function that hopefully adds form input to state - event handler
-  const handleSubmit = (event) => {
+  // Event handler for form submission
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const newComment = event.target.elements.comment.value;
-    // check if the value is not empty or whitespace, it will not submit if there is
-    if (newComment.trim() !== '') {
-      setComment([...comment, newComment]);
-      event.target.reset();
-    }
-  };
-
-  // function to hopefully handle delete
-  const handleDelete = (index) => {
-    const newComments = [...comment];
-    newComments.splice(index, 1);
-    setComment(newComments);
-    console.log('state: ', comment);
-  };
-
-  // populate with burns after fetch is successful
-  const allItems = [];
-  if (!loading && data !== null) {
-    // iterate to create a new <PostItem > component for each entry
-    for (let i = 0; i < data.length; i++) {
-      allItems.push(
-        <PostItem
-          comment={data[i].message}
-          key={i}
-          onDelete={() => handleDelete(i)}
-        />
+    setLoading(true);
+    console.log('handleSubmit comment, ', comment);
+    try {
+      let res = await fetch('/getBurns', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: comment,
+        }),
+      });
+      let resJson = await res.json();
+      if (res.status === 201) {
+        setComment(''); // change comment back to empty string
+        setMessage('Girl on Girl Crime Committed'); // tell us entry has been submitted
+      } else {
+        setMessage('Error occurred in the post request');
+      }
+    } catch (err) {
+      console.log(err);
+      setMessage(
+        "Fetch didn't happen - Error occurred fetching data in post request"
       );
     }
+    setLoading(false); // Set loading back to false after the API call is completed
+  };
+
+  // event handler for input change
+  // need to throttle/ debounce
+  const handleChange = (event) => {
+    setComment(event.target.value);
+    console.log('comment: ', comment);
+  };
+
+  // tell the user that the data is loading
+  if (loading) {
+    return <div className="loading">Loading...</div>; // Render a loading state while waiting for the Promise to resolve
   }
+
+  // also may need to fetch upon completion of post
+
   return (
-    <div>
-      <div className="say-something">
-        <h2>Say Something Behind Your Friend's Back</h2>
-        <form onSubmit={handleSubmit} id="comment-form">
-          <textarea
-            type="text"
-            id="comment"
-            name="comment"
-            placeholder="You let it out, honey. Put it in the book."
-          ></textarea>
-          {/* <input type="file"></input> */}
-          <div id="button-id">
-            <button type="submit" className="submit-button">
-              submit
-            </button>
-          </div>
-        </form>
-      </div>
-      {allItems}
+    <div className="say-something">
+      <h2>Say Something Behind Your Friend's Back</h2>
+      <form onSubmit={handleSubmit} id="comment-form">
+        <input
+          type="text"
+          value={comment}
+          placeholder="You let it out, honey. Put it in the book."
+          onChange={handleChange}
+        ></input>
+        <button type="submit" className="submit-button">
+          submit
+        </button>
+      </form>
     </div>
   );
 }
