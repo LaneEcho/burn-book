@@ -10,33 +10,39 @@ function FormComponent() {
 
   // Event handler for form submission
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    console.log('handleSubmit comment, ', comment);
-    try {
-      let res = await fetch('/getBurns', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: comment,
-        }),
-      });
-      let resJson = await res.json();
-      if (res.status === 201) {
-        setComment(''); // change comment back to empty string
-        setMessage('Girl on Girl Crime Committed'); // tell us entry has been submitted
-      } else {
-        setMessage('Error occurred in the post request');
+    const newComment = event.target.elements.comment.value;
+    // check if the value is not empty or whitespace, it will not submit if there is
+    if (newComment.trim() !== '') {
+      event.preventDefault();
+      // for UX - is the submit loading?
+      setLoading(true);
+      // setDisabled(false);
+
+      try {
+        let res = await fetch('/getBurns', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: comment,
+          }),
+        });
+        let resJson = await res.json();
+        if (res.status === 201) {
+          setComment(''); // change comment back to empty string
+          setMessage('Girl on Girl Crime Committed'); // tell us entry has been submitted
+        } else {
+          setMessage('Error occurred in the post request');
+        }
+      } catch (err) {
+        console.log(err);
+        setMessage(
+          "Fetch didn't happen - Error occurred fetching data in post request"
+        );
       }
-    } catch (err) {
-      console.log(err);
-      setMessage(
-        "Fetch didn't happen - Error occurred fetching data in post request"
-      );
+      setLoading(false); // Set loading back to false after the API call is completed
     }
-    setLoading(false); // Set loading back to false after the API call is completed
   };
 
   // event handler for input change
