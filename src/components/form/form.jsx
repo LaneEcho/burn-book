@@ -1,6 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import useFetch from '../../hooks/useFetch.jsx';
 import './form.scss';
+
+// declare a function to debounce
+function debounce(callback, waitTime) {
+  let timeoutId;
+  return function (...args) {
+    clearTimeout(timeoutId);
+    // call the callback in the proper context (this) with the correct arguments (args)
+    // callback function is executed in the same context it was originally called from
+    timeoutId = setTimeout(() => callback.apply(this, args), waitTime);
+  };
+}
 
 function FormComponent() {
   // initialize state - comment is empty string
@@ -45,15 +56,26 @@ function FormComponent() {
     setDisabled(true);
   };
 
-  // event handler for input change
-  // need to throttle/ debounce
+  // debounced version of handleChange with 400ms delay
+  const debouncedHandleChange = useCallback(
+    debounce((value) => {
+      // actions to be debounced
+      console.log('comment: ', value);
+      setDisabled(false);
+    }, 400),
+    [] // Empty dependency array to ensure the debounce function is created only once
+  );
+
+  // update the input field and debounce actions
   const handleChange = (event) => {
-    setComment(event.target.value);
-    setDisabled(false);
-    console.log('comment: ', comment);
+    const value = event.target.value;
+    // update the input field immediately
+    setComment(value);
+    // debounce the action
+    debouncedHandleChange(value);
   };
 
-  // tell the user that the data is loading
+  // tell the user that the data is loading - add component later for visual feedback
   if (loading) {
     return <div className="loading">Loading...</div>; // Render a loading state while waiting for the Promise to resolve
   }
