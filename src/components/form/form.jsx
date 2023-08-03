@@ -7,6 +7,8 @@ function FormComponent() {
   const [comment, setComment] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false); // Set loading to false by default
+  // enable/ disable submit button
+  const [disabled, setDisabled] = useState(true);
 
   // Event handler for form submission
   const handleSubmit = async (event) => {
@@ -69,7 +71,7 @@ function FormComponent() {
           placeholder="You let it out, honey. Put it in the book."
           onChange={handleChange}
         ></input>
-        <button type="submit" className="submit-button">
+        <button type="submit" className="submit-button" disabled={disabled}>
           submit
         </button>
       </form>
