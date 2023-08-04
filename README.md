@@ -68,9 +68,11 @@ _Coming soon_!
 | CSS to SASS                             | ✅     |
 | PostgreSQL database                     | ✅     |
 | Write server with Express               | ✅     |
-| Full CRUD Functionality                 | ⏳     |
-| Convert to TypeScript                   | ⏳     |
+| Update                                  | ⏳     |
+| Delete                                  | ⏳     |
+| New Burns are fetched after post        | ⏳     |
 | Testing w/ Jest + React Testing Library | ⏳     |
+| Convert to TypeScript                   | ⏳     |
 | Image uploads                           | ⏳     |
 | And more...                             | ⏳     |
 

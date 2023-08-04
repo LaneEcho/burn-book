@@ -7,6 +7,10 @@ p {
   margin-bottom: 10px;
 }
 
-.remove-button {
+.edit-button {
+  @include button($hot-pink, $primary-white);
+}
+
+.delete-button {
   @include button($hot-pink, $primary-white);
 }

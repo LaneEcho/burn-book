@@ -16,8 +16,11 @@ function PostItem(props) {
   return (
     <div className="post-item">
       <p>{props.comment}</p>
-      <button className="remove-button" onClick={props.onDelete}>
-        remove
+      <button className="edit-button" onClick={null}>
+        edit
+      </button>
+      <button className="delete-button" onClick={null}>
+        delete
       </button>
     </div>
   );
