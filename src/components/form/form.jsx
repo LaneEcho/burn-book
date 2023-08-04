@@ -25,43 +25,52 @@ function FormComponent() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // for UX - is the submit loading?
-    setLoading(true);
-    // setDisabled(false);
+    // do not submit if empty string
+    // could also throttle API calls in the future
+    if (comment.trim() !== '') {
+      // for UX - is the submit loading?
+      setLoading(true);
 
-    try {
-      let res = await fetch('/getBurns', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: comment,
-        }),
-      });
-      let resJson = await res.json();
-      if (res.status === 201) {
-        setComment(''); // change comment back to empty string
-        setMessage('Girl on Girl Crime Committed'); // tell us entry has been submitted
-      } else {
-        setMessage('Error occurred in the post request');
+      try {
+        let res = await fetch('/getBurns', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: comment,
+          }),
+        });
+        let resJson = await res.json();
+        if (res.status === 201) {
+          setComment(''); // change comment back to empty string
+          setMessage('Girl on Girl Crime Committed'); // tell us entry has been submitted
+        } else {
+          setMessage('Error occurred in the post request');
+        }
+      } catch (err) {
+        console.log(err);
+        setMessage(
+          "Fetch didn't happen - Error occurred fetching data in post request"
+        );
       }
-    } catch (err) {
-      console.log(err);
-      setMessage(
-        "Fetch didn't happen - Error occurred fetching data in post request"
-      );
+      setLoading(false); // Set loading back to false after the API call is completed
+      setDisabled(true);
     }
-    setLoading(false); // Set loading back to false after the API call is completed
-    setDisabled(true);
+    // alert so comment is not empty string
+    else {
+      setDisabled(true);
+      alert('Please write a comment');
+    }
   };
 
   // debounced version of handleChange with 400ms delay
   const debouncedHandleChange = useCallback(
     debounce((value) => {
-      // actions to be debounced
-      console.log('comment: ', value);
-      setDisabled(false);
+      // submit button becomes active
+      if (value.trim() !== '') {
+        setDisabled(false);
+      } else setDisabled(true);
     }, 400),
     [] // Empty dependency array to ensure the debounce function is created only once
   );
@@ -71,6 +80,7 @@ function FormComponent() {
     const value = event.target.value;
     // update the input field immediately
     setComment(value);
+    console.log('immediate comment: ', value);
     // debounce the action
     debouncedHandleChange(value);
   };
