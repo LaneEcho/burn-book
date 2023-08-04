@@ -5,6 +5,7 @@ const burnController = {};
 // post burn creates a new burn entry in database
 burnController.postBurn = async (req, res, next) => {
   const newBurn = req.body.message;
+
   // query to just add message to database, expand for usernames in future
   const query = `INSERT INTO burn_book (message)
       VALUES ($1)
@@ -26,7 +27,7 @@ burnController.postBurn = async (req, res, next) => {
 
 // getBurn retrieves all burns from database
 burnController.getBurns = async (req, res, next) => {
-  const query = 'SELECT * FROM burn_book ORDER BY id ASC;';
+  const query = 'SELECT * FROM burn_book ORDER BY id DESC;';
 
   try {
     const result = await db.query(query);

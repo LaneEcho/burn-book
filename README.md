@@ -66,11 +66,13 @@ _Coming soon_!
 | Feature                                 | Status |
 | --------------------------------------- | ------ |
 | CSS to SASS                             | ✅     |
-| PostgreSQL database                     | ⏳     |
-| Write server with Express               | ⏳     |
-| Full CRUD Functionality                 | ⏳     |
-| Convert to TypeScript                   | ⏳     |
+| PostgreSQL database                     | ✅     |
+| Write server with Express               | ✅     |
+| Update                                  | ⏳     |
+| Delete                                  | ⏳     |
+| New Burns are fetched after post        | ⏳     |
 | Testing w/ Jest + React Testing Library | ⏳     |
+| Convert to TypeScript                   | ⏳     |
 | Image uploads                           | ⏳     |
 | And more...                             | ⏳     |
 

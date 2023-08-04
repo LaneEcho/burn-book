@@ -1,9 +1,9 @@
-@import '../variables';
-@import '../mixins';
+@import '../../variables';
+@import '../../mixins';
 
 @font-face {
   font-family: 'handwriting';
-  src: url(../assets/handwriting.ttf) format('truetype');
+  src: url(../../assets/handwriting.ttf) format('truetype');
 }
 
 .say-something {
@@ -23,13 +23,15 @@ form {
   width: 100%;
 }
 
-textarea {
+input {
   width: 100%;
   resize: vertical;
   padding: 10px;
   border: 1px solid $hot-pink;
   text-align: center;
   background-color: $primary-white;
+  overflow: scroll;
+  font-family: $default-font;
   &:focus {
     outline: none !important;
     border-color: $dark-pink;
@@ -49,4 +51,8 @@ textarea {
 
 .submit-button {
   @include button($hot-pink, $primary-white);
+}
+
+.loading {
+  font-family: 'handwriting', $default-font;
 }
