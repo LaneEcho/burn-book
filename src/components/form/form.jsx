@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import useFetch from '../../hooks/useFetch.jsx';
+import PostItem from '../postItem/postItem.jsx';
 import './form.scss';
 
 // declare a function to debounce
@@ -28,7 +29,7 @@ function FormComponent() {
     // do not submit if empty string
     // could also throttle API calls in the future
     if (comment.trim() !== '') {
-      // for UX - is the submit loading?
+      // for UX - is the submit loading? Do some visual feedback here...
       setLoading(true);
 
       try {
@@ -41,7 +42,7 @@ function FormComponent() {
             message: comment,
           }),
         });
-        let resJson = await res.json();
+        let resJson = await res.json(); // do we need this line?
         if (res.status === 201) {
           setComment(''); // change comment back to empty string
           setMessage('Girl on Girl Crime Committed'); // tell us entry has been submitted
@@ -54,6 +55,7 @@ function FormComponent() {
           "Fetch didn't happen - Error occurred fetching data in post request"
         );
       }
+
       setLoading(false); // Set loading back to false after the API call is completed
       setDisabled(true);
     }
@@ -62,6 +64,9 @@ function FormComponent() {
       setDisabled(true);
       alert('Please write a comment');
     }
+
+    // we could just add this as a post item - figure out how to optimize (possible caching?)
+    // get request to get whatever we just sent
   };
 
   // debounced version of handleChange with 400ms delay
@@ -78,19 +83,16 @@ function FormComponent() {
   // update the input field and debounce actions
   const handleChange = (event) => {
     const value = event.target.value;
-    // update the input field immediately
+    // update the input field immediately for user feedback
     setComment(value);
-    console.log('immediate comment: ', value);
     // debounce the action
     debouncedHandleChange(value);
   };
 
-  // tell the user that the data is loading - add component later for visual feedback
+  // add component later for visual feedback while waiting for promise to resolve
   if (loading) {
-    return <div className="loading">Loading...</div>; // Render a loading state while waiting for the Promise to resolve
+    return <div className="loading">Loading...</div>;
   }
-
-  // also may need to fetch upon completion of post
 
   return (
     <div className="say-something">
