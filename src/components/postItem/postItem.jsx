@@ -24,10 +24,9 @@ function PostItem(props) {
             id: props.id,
           }),
         });
-        let resJson = await res.json(); // do we need this line?
-        if (res.status === 201) {
-          setMessage('Girl on Girl Crime Erased');
-        } else {
+
+        // 204 status "No Content" for delete requests
+        if (res.status === 204) {
           setMessage('Error occurred in the delete request');
         }
       } catch (err) {
@@ -39,10 +38,6 @@ function PostItem(props) {
 
       setLoading(false); // Set loading back to false after the API call is completed
     }
-    // else {
-    //   setDisabled(true);
-    //   alert('Please write a comment');
-    // }
   };
 
   return (
