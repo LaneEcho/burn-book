@@ -1,9 +1,13 @@
 import React, { Component, useState } from 'react';
+import '../form/form.jsx';
 import './postItem.scss';
+import FormComponent from '../form/form.jsx';
 
 function PostItem(props) {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  // state for modal
+  const [modalState, setModalState] = useState(false);
 
   // delete function
   const handleDelete = async (event) => {
@@ -54,6 +58,9 @@ function PostItem(props) {
       <button className="delete-button" onClick={handleDelete}>
         delete
       </button>
+      <div className="modal">
+        <FormComponent toggle={modalState} />
+      </div>
     </div>
   );
 }

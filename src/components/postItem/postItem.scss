@@ -7,6 +7,17 @@ p {
   margin-bottom: 10px;
 }
 
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1;
+  position: fixed;
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
 .edit-button {
   @include button($hot-pink, $primary-white);
 }
