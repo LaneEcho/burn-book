@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import useFetch from '../../hooks/useFetch.jsx';
 import FormComponent from '../form/form.jsx';
 import PostItem from '../postItem/postItem.jsx';
+import './container.scss';
 
 function Container() {
   // initial fetch of data to be displayed
@@ -25,6 +26,7 @@ function Container() {
   }
   return (
     <div className="container">
+      <h2>Say Something Behind Your Friend's Back</h2>
       <FormComponent />
       <div className="burn-entries">{allItems}</div>
     </div>
