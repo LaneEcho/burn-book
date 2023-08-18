@@ -44,22 +44,26 @@ function PostItem(props) {
   };
 
   // update function
-  const handleUpdate = async (event) => {
+  const handleUpdate = (event) => {
     // in case we need to track if something is loading for UX
     setLoading(true);
+    setModalState(!modalState);
+    console.log('modal open');
   };
 
   return (
     <div className="post-item">
       <p>{props.comment}</p>
-      <button className="edit-button" onClick={null}>
+      <button className="edit-button" onClick={handleUpdate}>
         edit
       </button>
       <button className="delete-button" onClick={handleDelete}>
         delete
       </button>
-      <div className="modal">
-        <FormComponent toggle={modalState} />
+      <div className="modal" toggle={modalState.toString()}>
+        <div className="form">
+          <FormComponent />
+        </div>
       </div>
     </div>
   );

@@ -10,8 +10,9 @@ p {
 .modal {
   visibility: hidden;
   opacity: 0;
-  z-index: 1;
   position: fixed;
+  z-index: 1;
+  background-color: aqua;
   &.active {
     visibility: visible;
     opacity: 1;

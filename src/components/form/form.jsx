@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import useFetch from '../../hooks/useFetch.jsx';
 import './form.scss';
 
 // declare a function to debounce
