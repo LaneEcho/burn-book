@@ -1,0 +1,16 @@
+@import '../../variables';
+@import '../../mixins';
+
+h2 {
+  width: auto;
+  color: $primary-black;
+  padding: $standard;
+  text-align: center;
+}
+
+.container {
+  height: 100vh;
+  overflow: scroll;
+  border: 2px solid $hot-pink;
+  padding: 10px;
+}

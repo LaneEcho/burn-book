@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import useFetch from '../../hooks/useFetch.jsx';
-import PostItem from '../postItem/postItem.jsx';
 import './form.scss';
 
 // declare a function to debounce
@@ -96,7 +95,6 @@ function FormComponent() {
 
   return (
     <div className="say-something">
-      <h2>Say Something Behind Your Friend's Back</h2>
       <form onSubmit={handleSubmit} id="comment-form">
         <input
           type="text"

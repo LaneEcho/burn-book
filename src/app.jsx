@@ -3,7 +3,7 @@ import Container from './components/container/container.jsx';
 
 function App() {
   return (
-    <div className="form-Component">
+    <div className="app">
       <Container />
     </div>
   );

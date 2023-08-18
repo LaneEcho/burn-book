@@ -10,8 +10,7 @@ function PostItem(props) {
     // confirm that burn will be deleted (true)
     const result = confirm('Delete this entry?');
     if (result) {
-      console.log(props.id);
-      //Logic to delete the item
+      // in case we need to track if something is loading for UX
       setLoading(true);
 
       try {
@@ -38,6 +37,12 @@ function PostItem(props) {
 
       setLoading(false); // Set loading back to false after the API call is completed
     }
+  };
+
+  // update function
+  const handleUpdate = async (event) => {
+    // in case we need to track if something is loading for UX
+    setLoading(true);
   };
 
   return (
