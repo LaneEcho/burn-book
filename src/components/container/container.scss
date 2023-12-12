@@ -1,6 +1,28 @@
 @import '../../variables';
 @import '../../mixins';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $light-pink;
+  font-family: $default-font;
+  font-size: 18px;
+}
+
+header {
+  color: $primary-black;
+  background-color: $hot-pink;
+  text-align: center;
+  h1 {
+    font-family: 'Ransom', $default-font;
+    font-size: 4em;
+  }
+}
+
 h2 {
   width: auto;
   color: $primary-black;
@@ -14,4 +36,16 @@ h2 {
   border: 2px solid $hot-pink;
   padding: 10px;
   margin-top: $standard * 2;
+}
+
+#app {
+  background-color: $primary-white;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex inline-block;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  // padding: $standard;
 }
