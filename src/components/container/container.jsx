@@ -4,6 +4,10 @@ import FormComponent from '../form/form.jsx';
 import PostItem from '../postItem/postItem.jsx';
 import './container.scss';
 
+import LoginButton from '../../../lib/auth0/login.js';
+import LogoutButton from '../../../lib/auth0/logout.js';
+import Profile from '../profile/profile.jsx';
+
 function Container() {
   // initial fetch of data to be displayed
   const { data, loading, error } = useFetch('/getBurns');
@@ -26,6 +30,9 @@ function Container() {
   }
   return (
     <div className="container">
+      <LoginButton></LoginButton>
+      <LogoutButton></LogoutButton>
+      <Profile></Profile>
       <h2>Say Something Behind Your Friend's Back</h2>
       <FormComponent />
       <div className="burn-entries">{allItems}</div>
