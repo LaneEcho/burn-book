@@ -1,0 +1,10 @@
+@import '../../variables';
+@import '../../mixins';
+
+.profile {
+  text-align: center;
+  color: $primary-black;
+  button {
+    @include button($hot-pink, $primary-white);
+  }
+}
