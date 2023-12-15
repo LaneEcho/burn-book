@@ -7,9 +7,10 @@
   box-sizing: border-box;
 }
 
-body {
+html {
   background-color: $light-pink;
   font-family: $default-font;
+  font-size: 18px;
 }
 
 header {
@@ -33,18 +34,26 @@ header {
 // }
 
 .container {
+  padding: $standard * 2;
   height: 90vh;
-  margin-top: $standard * 2;
-  margin-bottom: $standard * 2;
   display: flex;
   justify-content: space-evenly;
-}
 
-.burn-entries {
-  background-color: $primary-white;
-  overflow: scroll;
-  border: 2px solid $hot-pink;
-  margin: $standard;
-  padding: $standard * 2;
-  width: 50vw;
+  .sidebar {
+    margin: $standard;
+    padding: $standard * 2;
+    background-color: $primary-white;
+    height: 80%;
+    @include border($hot-pink);
+  }
+
+  .burn-entries {
+    background-color: $primary-white;
+    overflow: scroll;
+    margin: $standard;
+    padding: $standard * 2;
+    width: 60vw;
+    height: 100%;
+    @include border($hot-pink);
+  }
 }

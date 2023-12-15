@@ -14,7 +14,6 @@ function Container() {
   // is there a way to make this faster?
   const allItems = [];
   if (!loading && data !== null) {
-    // iterate to create a new <PostItem > component for each entry
     for (let i = 0; i < data.length; i++) {
       allItems.push(
         <PostItem

@@ -7,6 +7,16 @@ p {
   margin-bottom: 10px;
 }
 
+.post-item {
+  font-family: 'handwriting', $default-font;
+  font-size: 35px;
+  color: $primary-black;
+  padding: $standard;
+  text-align: center;
+  border: 1px solid $hot-pink;
+  margin: $standard * 2;
+}
+
 .modal {
   visibility: hidden;
   opacity: 0;

@@ -69,7 +69,7 @@ _Coming soon_!
 | PostgreSQL database                     | ✅     |
 | Write server with Express               | ✅     |
 | Update                                  | ⏳     |
-| Delete                                  | ⏳     |
+| Delete                                  | ✅     |
 | New Burns are fetched after post        | ⏳     |
 | Testing w/ Jest + React Testing Library | ⏳     |
 | Convert to TypeScript                   | ⏳     |
