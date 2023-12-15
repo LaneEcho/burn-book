@@ -10,7 +10,6 @@
 body {
   background-color: $light-pink;
   font-family: $default-font;
-  font-size: 18px;
 }
 
 header {
@@ -23,29 +22,29 @@ header {
   }
 }
 
-h2 {
-  width: auto;
-  color: $primary-black;
-  padding: $standard;
-  text-align: center;
-}
+// #app {
+//   margin-left: auto;
+//   margin-right: auto;
+//   display: flex inline-block;
+//   flex-direction: column;
+//   align-items: center;
+//   align-content: center;
+//   padding: $standard;
+// }
 
 .container {
-  height: 100vh;
-  overflow: scroll;
-  border: 2px solid $hot-pink;
-  padding: 10px;
+  height: 90vh;
   margin-top: $standard * 2;
+  margin-bottom: $standard * 2;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-#app {
+.burn-entries {
   background-color: $primary-white;
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex inline-block;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  // padding: $standard;
+  overflow: scroll;
+  border: 2px solid $hot-pink;
+  margin: $standard;
+  padding: $standard * 2;
+  width: 50vw;
 }

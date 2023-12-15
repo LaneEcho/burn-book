@@ -18,6 +18,13 @@
   justify-content: space-evenly;
 }
 
+h2 {
+  width: auto;
+  color: $primary-black;
+  padding: $standard;
+  text-align: center;
+}
+
 form {
   margin-top: 10px;
   width: 100%;

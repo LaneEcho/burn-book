@@ -28,11 +28,10 @@ function Container() {
   }
   return (
     <div className="container">
-      {/* <LoginButton></LoginButton> */}
-      {/* <LogoutButton></LogoutButton> */}
-      <Profile></Profile>
-      <h2>Say Something Behind Your Friend's Back</h2>
-      <FormComponent />
+      <div className="sidebar">
+        <Profile></Profile>
+        <FormComponent />
+      </div>
       <div className="burn-entries">{allItems}</div>
     </div>
   );
