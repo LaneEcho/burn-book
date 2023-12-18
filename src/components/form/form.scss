@@ -7,24 +7,27 @@
 }
 
 .say-something {
-  width: auto;
   color: $primary-black;
   padding: $standard;
   text-align: center;
-  border: 2px solid $hot-pink;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-evenly;
-}
 
-form {
-  margin-top: 10px;
-  width: 100%;
+  h2 {
+    color: $primary-black;
+    padding: $standard;
+    text-align: center;
+  }
+
+  form {
+    margin: $standard;
+  }
 }
 
 input {
   width: 100%;
+  height: 100px;
   resize: vertical;
   padding: 10px;
   border: 1px solid $hot-pink;
@@ -32,21 +35,12 @@ input {
   background-color: $primary-white;
   overflow: scroll;
   font-family: $default-font;
+
   &:focus {
     outline: none !important;
     border-color: $dark-pink;
     box-shadow: 0 0 5px $dark-pink;
   }
-}
-
-.post-item {
-  font-family: 'handwriting', $default-font;
-  font-size: 35px;
-  color: $primary-black;
-  padding: $standard;
-  text-align: center;
-  border: 1px solid $hot-pink;
-  margin-top: 10px;
 }
 
 .submit-button {
@@ -55,4 +49,5 @@ input {
 
 .loading {
   font-family: 'handwriting', $default-font;
+  width: 100%;
 }

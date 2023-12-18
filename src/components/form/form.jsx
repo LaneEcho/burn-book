@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import useFetch from '../../hooks/useFetch.jsx';
-import PostItem from '../postItem/postItem.jsx';
 import './form.scss';
 
 // declare a function to debounce

@@ -7,6 +7,28 @@ p {
   margin-bottom: 10px;
 }
 
+.post-item {
+  font-family: 'handwriting', $default-font;
+  font-size: 35px;
+  color: $primary-black;
+  padding: $standard;
+  text-align: center;
+  border: 1px solid $hot-pink;
+  margin: $standard * 2;
+}
+
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  z-index: 1;
+  background-color: aqua;
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
 .edit-button {
   @include button($hot-pink, $primary-white);
 }

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import useFetch from '../../hooks/useFetch.jsx';
 import FormComponent from '../form/form.jsx';
 import PostItem from '../postItem/postItem.jsx';
+import './container.scss';
+
+import Profile from '../profile/profile.jsx';
 
 function Container() {
   // initial fetch of data to be displayed
@@ -11,7 +14,6 @@ function Container() {
   // is there a way to make this faster?
   const allItems = [];
   if (!loading && data !== null) {
-    // iterate to create a new <PostItem > component for each entry
     for (let i = 0; i < data.length; i++) {
       allItems.push(
         <PostItem
@@ -25,7 +27,10 @@ function Container() {
   }
   return (
     <div className="container">
-      <FormComponent />
+      <div className="sidebar">
+        <Profile></Profile>
+        <FormComponent />
+      </div>
       <div className="burn-entries">{allItems}</div>
     </div>
   );

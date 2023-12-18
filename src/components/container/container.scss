@@ -1,0 +1,59 @@
+@import '../../variables';
+@import '../../mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: $light-pink;
+  font-family: $default-font;
+  font-size: 18px;
+}
+
+header {
+  color: $primary-black;
+  background-color: $hot-pink;
+  text-align: center;
+  h1 {
+    font-family: 'Ransom', $default-font;
+    font-size: 4em;
+  }
+}
+
+// #app {
+//   margin-left: auto;
+//   margin-right: auto;
+//   display: flex inline-block;
+//   flex-direction: column;
+//   align-items: center;
+//   align-content: center;
+//   padding: $standard;
+// }
+
+.container {
+  padding: $standard * 2;
+  height: 90vh;
+  display: flex;
+  justify-content: space-evenly;
+
+  .sidebar {
+    margin: $standard;
+    padding: $standard * 2;
+    background-color: $primary-white;
+    height: 80%;
+    @include border($hot-pink);
+  }
+
+  .burn-entries {
+    background-color: $primary-white;
+    overflow: scroll;
+    margin: $standard;
+    padding: $standard * 2;
+    width: 60vw;
+    height: 100%;
+    @include border($hot-pink);
+  }
+}
