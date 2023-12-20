@@ -6,7 +6,7 @@ function useFetch(url) {
   // state for fetching data
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   // load inital burns upon page load
   useEffect(() => {
@@ -18,6 +18,7 @@ function useFetch(url) {
         setData(usefulData);
       })
       .catch((err) => {
+        setError(true);
         console.log('Error in getBurns: ', err);
       });
   }, []);

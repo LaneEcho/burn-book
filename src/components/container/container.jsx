@@ -8,11 +8,18 @@ import Profile from '../profile/profile.jsx';
 
 function Container() {
   // initial fetch of data to be displayed
-  const { data, loading, error } = useFetch('/getBurns');
+  const { data, loading, error } = useFetch('/getBurnss');
 
-  // populate with burns after fetch is successful
-  // is there a way to make this faster?
+  // allItems is
   const allItems = [];
+  if (error) {
+    allItems.push(
+      <div className="error">
+        <p>We couldn't make fetch happen.</p>
+        <p>Try again later.</p>
+      </div>
+    );
+  }
   if (!loading && data !== null) {
     for (let i = 0; i < data.length; i++) {
       allItems.push(
