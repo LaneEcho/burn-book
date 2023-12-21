@@ -1,26 +1,26 @@
 import { useState, useEffect } from 'react';
 
-// custom hook to fetch data once on page load via useEffect hook
+// custom hook to fetch data once on page load
 
 function useFetch(url) {
-  // state for fetching data
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  // load inital burns upon page load
   useEffect(() => {
+    setLoading(true);
+    setError(false);
     fetch(url)
       .then((response) => response.json())
       .then((usefulData) => {
         // console.log(usefulData);
-        setLoading(false);
         setData(usefulData);
       })
       .catch((err) => {
         setError(true);
         console.log('Error in getBurns: ', err);
       });
+    setLoading(false);
   }, []);
 
   return { data, loading, error };

@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import useFetch from '../../hooks/useFetch.jsx';
 import FormComponent from '../form/form.jsx';
 import PostItem from '../postItem/postItem.jsx';
+import Profile from '../profile/profile.jsx';
 import './container.scss';
 
-import Profile from '../profile/profile.jsx';
-
 function Container() {
-  // initial fetch of data to be displayed
-  const { data, loading, error } = useFetch('/getBurnss');
+  const { data, loading, error } = useFetch('/getBurns');
 
-  // allItems is
+  // allItems is displaying other items on page
+  // usually burn entries but could also be errors
   const allItems = [];
+
   if (error) {
     allItems.push(
       <div className="error">
@@ -20,6 +20,7 @@ function Container() {
       </div>
     );
   }
+
   if (!loading && data !== null) {
     for (let i = 0; i < data.length; i++) {
       allItems.push(
@@ -32,13 +33,18 @@ function Container() {
       );
     }
   }
+
+  console.log(data); // is an array of objects
+
   return (
     <div className="container">
-      <div className="sidebar">
+      <aside className="sidebar">
         <Profile></Profile>
         <FormComponent />
-      </div>
-      <div className="burn-entries">{allItems}</div>
+      </aside>
+      <section className="burn-entries">
+        {loading ? <p>Loading...</p> : allItems}
+      </section>
     </div>
   );
 }

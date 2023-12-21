@@ -14,37 +14,36 @@
   flex-direction: column;
   justify-content: space-evenly;
 
-  h2 {
-    color: $primary-black;
-    padding: $standard;
-    text-align: center;
-  }
-
   form {
     margin: $standard;
+
+    label {
+      color: $primary-black;
+      font-size: 1.5rem;
+    }
+
+    input {
+      margin-top: $standard * 2;
+      width: 100%;
+      height: 100px;
+      resize: vertical;
+      padding: $standard * 2;
+      border: 1px solid $hot-pink;
+      text-align: center;
+      overflow: scroll;
+      font-family: $default-font;
+
+      &:focus {
+        outline: none !important;
+        border-color: $dark-pink;
+        box-shadow: 0 0 5px $dark-pink;
+      }
+    }
   }
-}
 
-input {
-  width: 100%;
-  height: 100px;
-  resize: vertical;
-  padding: 10px;
-  border: 1px solid $hot-pink;
-  text-align: center;
-  background-color: $primary-white;
-  overflow: scroll;
-  font-family: $default-font;
-
-  &:focus {
-    outline: none !important;
-    border-color: $dark-pink;
-    box-shadow: 0 0 5px $dark-pink;
+  .submit-button {
+    @include button($hot-pink, $primary-white);
   }
-}
-
-.submit-button {
-  @include button($hot-pink, $primary-white);
 }
 
 .loading {

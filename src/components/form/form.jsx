@@ -12,25 +12,23 @@ function debounce(callback, waitTime) {
   };
 }
 
-function FormComponent() {
-  // initialize state - comment is empty string
+function FormComponent(props) {
   const [comment, setComment] = useState('');
   const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false); // Set loading to false by default
-  // enable/ disable submit button
+  const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
 
-  // Event handler for form submission
+  // async function to submit text
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     // do not submit if empty string
     // could also throttle API calls in the future
     if (comment.trim() !== '') {
-      // for UX - is the submit loading? Do some visual feedback here...
       setLoading(true);
 
       try {
+        // send POST request
         let res = await fetch('/getBurns', {
           method: 'POST',
           headers: {
@@ -40,7 +38,7 @@ function FormComponent() {
             message: comment,
           }),
         });
-        let resJson = await res.json(); // do we need this line?
+        let resJson = await res.json();
         if (res.status === 201) {
           setComment(''); // change comment back to empty string
           setMessage('Girl on Girl Crime Committed'); // tell us entry has been submitted
@@ -94,13 +92,14 @@ function FormComponent() {
 
   return (
     <div className="say-something">
-      <h2>Say Something Behind Your Friend's Back</h2>
       <form onSubmit={handleSubmit} id="comment-form">
+        <label htmlFor="text">Say Something Behind Your Friend's Back:</label>
         <input
           type="text"
+          id="text"
           value={comment}
-          placeholder="You let it out, honey. Put it in the book."
           onChange={handleChange}
+          placeholder="You let it out, honey. Put it in the book."
         ></input>
         <button type="submit" className="submit-button" disabled={disabled}>
           submit
