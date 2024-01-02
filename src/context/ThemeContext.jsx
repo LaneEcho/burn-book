@@ -1,19 +1,20 @@
 import React, { createContext, useContext, useState } from 'react';
 
 // creating instance of context
-export const ThemeContext = createContext();
+export const ThemeContext = createContext({ theme: 'light', undefined });
 
 // provider
 export const ThemeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(false);
+  // could also use localstorage to save theme preference
+  const [theme, setTheme] = useState('light');
 
-  function toggleTheme() {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle('dark');
-  }
+  // function toggleTheme() {
+  //   setDarkMode(!darkMode);
+  //   document.documentElement.classList.toggle('dark');
+  // }
 
   return (
-    <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Auth0Provider } from '@auth0/auth0-react';
 import App from './app.jsx';
+import { ThemeProvider } from './context/ThemeContext.jsx';
 
 const container = document.getElementById('app');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
@@ -14,6 +15,8 @@ root.render(
       redirect_uri: window.location.origin,
     }}
   >
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </Auth0Provider>
 );
