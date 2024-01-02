@@ -6,15 +6,15 @@ export const ThemeContext = createContext({ theme: 'light', undefined });
 // provider
 export const ThemeProvider = ({ children }) => {
   // could also use localstorage to save theme preference
-  const [theme, setTheme] = useState('light');
+  const [darkMode, setDarkMode] = useState(false);
 
-  // function toggleTheme() {
-  //   setDarkMode(!darkMode);
-  //   document.documentElement.classList.toggle('dark');
-  // }
+  function toggleTheme() {
+    setDarkMode(!darkMode);
+    // document.documentElement.classList.toggle('dark');
+  }
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ darkMode, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

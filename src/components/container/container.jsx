@@ -8,7 +8,7 @@ import './container.scss';
 
 function Container() {
   const { data, loading, error } = useFetch('/getBurns');
-  const { theme, setTheme } = useTheme();
+  const { darkMode, toggleTheme } = useTheme();
 
   // allItems is displaying other items on page
   // usually burn entries but could also be errors
@@ -38,18 +38,12 @@ function Container() {
 
   console.log(data); // is an array of objects
 
-  function changeTheme() {
-    if (theme === 'light') {
-      setTheme('dark');
-    }
-  }
-
   return (
     <div className="container">
       <aside className="sidebar">
         <Profile></Profile>
         <FormComponent />
-        <button onClick={changeTheme}>{theme}</button>
+        <button onClick={toggleTheme}>{darkMode ? 'true' : 'false'}</button>
       </aside>
       <section className="burn-entries">
         {loading ? <p>Loading...</p> : allItems}
