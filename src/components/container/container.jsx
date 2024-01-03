@@ -4,7 +4,6 @@ import FormComponent from '../form/form.jsx';
 import PostItem from '../postItem/postItem.jsx';
 import Profile from '../profile/profile.jsx';
 import { useTheme } from '../../context/ThemeContext.jsx';
-
 import IconButton from '@mui/material/IconButton';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';

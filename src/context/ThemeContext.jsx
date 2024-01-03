@@ -1,16 +1,15 @@
 import React, { createContext, useContext, useState } from 'react';
 
-// creating instance of context
-export const ThemeContext = createContext({ theme: 'light', undefined });
+export const ThemeContext = createContext();
 
-// provider
 export const ThemeProvider = ({ children }) => {
   // could also use localstorage to save theme preference
+  // or read user preference
   const [darkMode, setDarkMode] = useState(false);
 
   function toggleTheme() {
     setDarkMode(!darkMode);
-    // document.documentElement.classList.toggle('dark');
+    document.documentElement.classList.toggle('dark');
   }
 
   return (

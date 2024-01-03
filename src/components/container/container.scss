@@ -11,6 +11,9 @@ html {
   background-color: $light-pink;
   font-family: $default-font;
   font-size: 18px;
+  &.dark {
+    background-color: $primary-black;
+  }
 }
 
 header {
