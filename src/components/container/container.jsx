@@ -42,15 +42,15 @@ function Container() {
   console.log(data); // is an array of objects
 
   return (
-    <div className="container">
-      <aside className="sidebar">
+    <div className={`container ${darkMode ? 'dark' : ''}`}>
+      <aside className={`sidebar ${darkMode ? 'dark' : ''}`}>
         <Profile></Profile>
         <FormComponent />
         <IconButton onClick={toggleTheme}>
           {darkMode ? <DarkModeIcon /> : <LightModeIcon />}
         </IconButton>
       </aside>
-      <section className="burn-entries">
+      <section className={`burn-entries ${darkMode ? 'dark' : ''}`}>
         {loading ? <p>Loading...</p> : allItems}
       </section>
     </div>

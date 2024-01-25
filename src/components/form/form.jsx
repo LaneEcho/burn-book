@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useTheme } from '../../context/ThemeContext.jsx';
 import './form.scss';
 
 // declare a function to debounce
@@ -17,6 +18,8 @@ function FormComponent(props) {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
+
+  const { darkMode } = useTheme();
 
   // async function to submit text
   const handleSubmit = async (event) => {
@@ -91,8 +94,8 @@ function FormComponent(props) {
   }
 
   return (
-    <div className="say-something">
-      <form onSubmit={handleSubmit} id="comment-form">
+    <div className={`say-something ${darkMode ? 'dark' : ''}`}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="text">Say Something Behind Your Friend's Back:</label>
         <input
           type="text"

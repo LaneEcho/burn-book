@@ -64,6 +64,6 @@ header {
 
   button {
     display: inline-block;
-    // @include button($hot-pink, $primary-white);
+    @include button($hot-pink, $primary-white);
   }
 }

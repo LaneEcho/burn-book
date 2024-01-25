@@ -3,8 +3,6 @@ import React, { createContext, useContext, useState } from 'react';
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  // could also use localstorage to save theme preference
-  // or read user preference
   const [darkMode, setDarkMode] = useState(false);
 
   function toggleTheme() {

@@ -1,3 +1,6 @@
+@mixin color-scheme($bg-color, $text-color) {
+}
+
 @mixin button($bg-color, $text-color) {
   border: 1px solid;
   font-family: $default-font;
