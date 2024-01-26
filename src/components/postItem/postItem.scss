@@ -1,13 +1,11 @@
 @import '../../variables';
 @import '../../mixins';
 
-p {
-  padding: $standard;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
 .post-item {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: baseline;
   font-family: 'handwriting', $default-font;
   font-size: 35px;
   color: $primary-black;
@@ -15,17 +13,10 @@ p {
   text-align: center;
   border: 1px solid $hot-pink;
   margin: $standard * 2;
-}
 
-.modal {
-  visibility: hidden;
-  opacity: 0;
-  position: fixed;
-  z-index: 1;
-  background-color: aqua;
-  &.active {
-    visibility: visible;
-    opacity: 1;
+  p {
+    padding: $standard;
+    margin: $standard * 2;
   }
 }
 
@@ -35,4 +26,23 @@ p {
 
 .delete-button {
   @include button($hot-pink, $primary-white);
+}
+
+.popover-container {
+  position: relative;
+  display: inline-block; /* Ensures the container only takes the necessary space */
+}
+
+.popover-content {
+  background-color: aqua;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  margin-left: 10px;
+  z-index: 1; /* Ensure the content appears above other elements */
+  display: none; /* Hide the content by default */
+}
+
+.popover-container:hover .popover-content {
+  display: block; /* Show the content on hover */
 }

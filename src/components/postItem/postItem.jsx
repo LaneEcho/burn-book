@@ -1,13 +1,29 @@
-import React, { Component, useState } from 'react';
-import '../form/form.jsx';
+import React, { useState } from 'react';
 import './postItem.scss';
-import FormComponent from '../form/form.jsx';
+
+import Popover from '../ui/popover.jsx';
+import IconButton from '../ui/IconButton.jsx';
+
+const moreIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={1.5}
+    stroke="currentColor"
+    style={{ width: '1.5rem', height: '1.5rem' }}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+    />
+  </svg>
+);
 
 function PostItem(props) {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  // state for modal
-  const [modalState, setModalState] = useState(false);
 
   // delete function
   const handleDelete = async (event) => {
@@ -51,20 +67,16 @@ function PostItem(props) {
     console.log('modal open');
   };
 
+  const buttonTrigger = (
+    <IconButton className="actions" icon={moreIcon}></IconButton>
+  );
+
+  const popoverContent = <h2>Fetch</h2>;
+
   return (
     <div className="post-item">
+      <Popover trigger={buttonTrigger} content={popoverContent}></Popover>
       <p>{props.comment}</p>
-      <button className="edit-button" onClick={handleUpdate}>
-        edit
-      </button>
-      <button className="delete-button" onClick={handleDelete}>
-        delete
-      </button>
-      <div className="modal" toggle={modalState.toString()}>
-        <div className="form">
-          <FormComponent />
-        </div>
-      </div>
     </div>
   );
 }

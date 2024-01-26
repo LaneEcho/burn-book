@@ -7,12 +7,10 @@
   color: $text-color;
   padding: 5px 15px;
   background-color: $bg-color;
-  display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: $standard;
   // width: 5em;
-  display: inline-block;
 
   &:hover {
     background-color: $text-color;
@@ -35,6 +33,28 @@
     outline: none !important;
     border-color: $dark-pink;
     box-shadow: 0 0 5px $dark-pink;
+  }
+}
+
+@mixin icon-button($color) {
+  border: none;
+  font-family: $default-font;
+  color: $primary-black;
+  padding: 5px 15px;
+  background-color: transparent;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: $standard;
+
+  &:hover {
+    color: $color;
+    border: none;
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none !important;
+    border-color: $dark-pink;
   }
 }
 
