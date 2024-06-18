@@ -25,6 +25,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.2",
     "@mui/material": "^5.15.2",
+    "@supabase/supabase-js": "^2.43.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "pg": "^8.11.1",
