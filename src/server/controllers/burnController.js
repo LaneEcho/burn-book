@@ -1,20 +1,21 @@
-const db = require('../databaseModel');
+const supabase = require('../databaseModel');
 
 const burnController = {};
 
-// post burn creates a new burn entry in database
+// insert a new burn entry
 burnController.postBurn = async (req, res, next) => {
   const newBurn = req.body.message;
 
-  // query to just add message to database, expand for usernames in future
-  const query = `INSERT INTO burn_book (message)
-      VALUES ($1)
-      RETURNING *;`;
-  const values = [newBurn];
   try {
-    //result is an id val
-    const result = await db.query(query, values);
-    res.locals.result = result.rows[0].id;
+    const { data, error } = await supabase
+      .from('burn_book')
+      .insert([{ message: newBurn }])
+      .select() // Use select() to return the inserted row
+      .single();
+
+    if (error) throw error;
+
+    res.locals.result = data.id;
     return next();
   } catch (err) {
     return next({
@@ -25,13 +26,17 @@ burnController.postBurn = async (req, res, next) => {
   }
 };
 
-// getBurn retrieves all burns from database
+// get all burns from database
 burnController.getBurns = async (req, res, next) => {
-  const query = 'SELECT * FROM burn_book ORDER BY id DESC;';
-
   try {
-    const result = await db.query(query);
-    res.locals.result = result.rows;
+    const { data, error } = await supabase
+      .from('burn_book')
+      .select('*')
+      .order('id', { ascending: false });
+
+    if (error) throw error;
+
+    res.locals.result = data;
     return next();
   } catch (err) {
     return next({
@@ -42,15 +47,21 @@ burnController.getBurns = async (req, res, next) => {
   }
 };
 
-// deleteBurn removes a burn from database
+// delete a burn from database
 burnController.deleteBurn = async (req, res, next) => {
   const id = req.body.id;
 
-  const query = 'DELETE FROM burn_book WHERE id = $1 RETURNING *;';
-
   try {
-    const result = await db.query(query, [id]);
-    res.locals.result = result.rows[0];
+    const { data, error } = await supabase
+      .from('burn_book')
+      .delete()
+      .eq('id', id)
+      .single();
+
+    if (error) throw error;
+
+    res.locals.result = data;
+    res.sendStatus(204);
     return next();
   } catch (err) {
     return next({
@@ -61,17 +72,21 @@ burnController.deleteBurn = async (req, res, next) => {
   }
 };
 
-// updateBurn updates an entry to make it meaner
+// update an entry to make it meaner
 burnController.updateBurn = async (req, res, next) => {
   const updatedData = req.body.message;
   const id = req.params.id;
 
-  const query = 'UPDATE burn_book SET message = $1 WHERE id = $2 RETURNING *;';
-
   try {
-    const result = await db.query(query, [updatedData, id]);
-    res.locals.result = result.rows[0];
-    return next();
+    const { data, error } = await supabase
+      .from('burn_book')
+      .update({ message: updatedData })
+      .eq('id', id)
+      .single();
+
+    if (error) throw error;
+
+    res.status(200).json({ data });
   } catch (err) {
     return next({
       log: `Express error in updateBurn middleware: ${err}`,
