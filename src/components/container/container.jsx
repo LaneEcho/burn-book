@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import useFetch from '../../hooks/useFetch.jsx';
 import FormComponent from '../form/form.jsx';
 import PostItem from '../postItem/postItem.jsx';
 import Profile from '../profile/profile.jsx';
@@ -9,12 +8,13 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import './container.scss';
 
+import { useFetchBurns } from '../../hooks/fetchQuery.jsx';
+
 function Container() {
-  const { data, loading, error } = useFetch('/getBurns');
+  const { isLoading, error, data } = useFetchBurns();
+
   const { darkMode, toggleTheme } = useTheme();
 
-  // allItems is displaying other items on page
-  // usually burn entries but could also be errors
   const allItems = [];
 
   if (error) {
@@ -26,7 +26,7 @@ function Container() {
     );
   }
 
-  if (!loading && data !== null) {
+  if (!isLoading && data !== null) {
     for (let i = 0; i < data.length; i++) {
       allItems.push(
         <PostItem
@@ -39,8 +39,6 @@ function Container() {
     }
   }
 
-  console.log(data); // is an array of objects
-
   return (
     <div className={`container ${darkMode ? 'dark' : ''}`}>
       {/* make sidebar a different component */}
@@ -52,7 +50,7 @@ function Container() {
         </IconButton>
       </aside>
       <section className={`burn-entries ${darkMode ? 'dark' : ''}`}>
-        {loading ? <p>Loading...</p> : allItems}
+        {isLoading ? <p>Loading...</p> : allItems}
       </section>
     </div>
   );
