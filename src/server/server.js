@@ -25,13 +25,18 @@ app.get('/getBurns', burnController.getBurns, (req, res) =>
   res.status(200).json(res.locals.result)
 );
 
-// // delete an entry
+// get request for one entry
+app.get('/getBurns/:id', burnController.getBurnById, (req, res) =>
+  res.status(200).json(res.locals.result)
+);
+
+// delete an entry
 app.delete('/getBurns', burnController.deleteBurn, (req, res) => {
   res.status(204).json(res.locals.result);
 });
 
 // update an entry
-app.put('/getBurns/:id', burnController.updateBurn, (req, res) => {
+app.patch('/getBurns/:id', burnController.updateBurn, (req, res) => {
   res.status(200).json(res.locals.result);
 });
 

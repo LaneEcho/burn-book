@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import '../form/form.jsx';
 import './postItem.scss';
-import FormComponent from '../form/form.jsx';
+import UpdatePostItem from './UpdatePostItem.jsx';
 
 function PostItem(props) {
   const [message, setMessage] = useState('');
@@ -60,11 +60,11 @@ function PostItem(props) {
       <button className="delete-button" onClick={handleDelete}>
         delete
       </button>
-      <div className="modal" toggle={modalState.toString()}>
-        <div className="form">
-          <FormComponent />
+      {modalState && (
+        <div className="modal" toggle={modalState.toString()}>
+          <UpdatePostItem id={props.id} open={setModalState} />
         </div>
-      </div>
+      )}
     </div>
   );
 }

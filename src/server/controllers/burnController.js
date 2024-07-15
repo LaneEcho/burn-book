@@ -47,6 +47,30 @@ burnController.getBurns = async (req, res, next) => {
   }
 };
 
+// get one burn by ID
+burnController.getBurnById = async (req, res, next) => {
+  const { id } = req.params; // Assuming the id is passed as a route parameter
+
+  try {
+    const { data, error } = await supabase
+      .from('burn_book')
+      .select('*')
+      .eq('id', id)
+      .single(); // Assuming 'id' is unique and you expect only one result
+
+    if (error) throw error;
+
+    res.locals.result = data;
+    return next();
+  } catch (err) {
+    return next({
+      log: `Express error in getBurnById middleware: ${err}`,
+      status: 500,
+      message: { err: 'An error occurred' },
+    });
+  }
+};
+
 // delete a burn from database
 burnController.deleteBurn = async (req, res, next) => {
   const id = req.body.id;

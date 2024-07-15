@@ -61,9 +61,8 @@ header {
     height: 100%;
     @include border($hot-pink);
   }
+}
 
-  button {
-    display: inline-block;
-    @include button($hot-pink, $primary-white);
-  }
+.icon-button {
+  @include icon-button($hot-pink);
 }

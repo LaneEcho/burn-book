@@ -43,6 +43,7 @@ function Container() {
 
   return (
     <div className={`container ${darkMode ? 'dark' : ''}`}>
+      {/* make sidebar a different component */}
       <aside className={`sidebar ${darkMode ? 'dark' : ''}`}>
         <Profile></Profile>
         <FormComponent />
