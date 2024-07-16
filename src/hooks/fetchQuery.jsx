@@ -21,5 +21,7 @@ export const useFetchBurns = () => {
     queryKey: ['burns'],
     queryFn: fetchBurns,
     refetchInterval: 1000, // use this to change the interval at which this runs
+    staleTime: 5 * 1000, // 5,000 ms - not make the query stale until the data is older than 5 seconds
+    //  stale query instruct React Query to update the cache in the background when appropriate
   });
 };

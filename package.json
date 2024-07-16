@@ -27,6 +27,7 @@
     "@mui/material": "^5.15.2",
     "@supabase/supabase-js": "^2.43.5",
     "@tanstack/react-query": "^5.51.1",
+    "@tanstack/react-query-devtools": "^5.51.1",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "react": "^18.2.0",
