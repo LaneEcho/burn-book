@@ -25,3 +25,23 @@ export const useFetchBurns = () => {
     //  stale query instruct React Query to update the cache in the background when appropriate
   });
 };
+
+// fetch one burn - GET request
+export const fetchBurn = async (id) => {
+  const response = await fetch(`/getBurns/${id}`);
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+
+  const data = await response.json();
+
+  return data;
+};
+
+export const useFetchBurn = (id) => {
+  return useQuery({
+    queryKey: ['burn', id],
+    queryFn: () => fetchBurn(id),
+  });
+};

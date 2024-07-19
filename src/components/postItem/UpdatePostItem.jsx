@@ -1,28 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import './postItem.scss';
-import useFetch from '../../hooks/useFetch.jsx';
+import { useFetchBurn } from '../../hooks/fetchQuery.jsx';
 
-function UpdatePostItem(props) {
+function UpdatePostItem({ id, open }) {
   const [comment, setComment] = useState('');
   const [message, setMessage] = useState('');
 
-  const { data, loading, error } = useFetch(`/getBurns/${props.id}`);
+  const { isLoading, error, data } = useFetchBurn(id);
 
   // useEffect to handle data changes
   useEffect(() => {
-    if (!loading && !error && data) {
+    if (!isLoading && !error && data) {
       setComment(data.message);
     }
-  }, [data, loading, error]);
+  }, [data, isLoading, error]);
 
   // update function
   const handleUpdate = async (event) => {
     event.preventDefault();
 
-    console.log('Update logic here', props.id);
-
     try {
-      let res = await fetch(`getBurns/${props.id}`, {
+      let res = await fetch(`getBurns/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -36,8 +34,7 @@ function UpdatePostItem(props) {
 
       if (res.status === 200) {
         setMessage('Girl on Girl Crime Updated');
-        // close updater - refactor this eventually
-        props.open();
+        open();
       } else {
         setMessage('Error occurred in the patch request');
       }
@@ -49,12 +46,12 @@ function UpdatePostItem(props) {
     }
   };
 
-  if (loading) {
+  if (isLoading) {
     return <div>Loading...</div>; // Optionally, show a loading indicator
   }
 
   if (error) {
-    return <div>Error fetching data</div>; // Handle error state
+    return <div>Error fetching data {error}</div>; // Handle error state
   }
 
   return (
