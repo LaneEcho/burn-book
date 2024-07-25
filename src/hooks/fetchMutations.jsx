@@ -2,15 +2,13 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 // add a burn
-export const addBurn = async () => {
+export const addBurn = async (comment) => {
   const res = await fetch('/getBurns', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      message: comment,
-    }),
+    body: JSON.stringify(comment),
   });
   return res.json();
 };
@@ -21,9 +19,8 @@ export const useAddBurn = () => {
   return useMutation({
     mutationFn: addBurn,
 
-    // callback to invalidate burns in cache
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['burns'] });
+      queryClient.invalidateQueries({ queryKey: ['burns'] }); // invalidate cache
       console.log('Girl on girl crime commmitted');
     },
   });
