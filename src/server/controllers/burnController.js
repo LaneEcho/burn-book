@@ -74,6 +74,7 @@ burnController.getBurnById = async (req, res, next) => {
 // delete a burn from database
 burnController.deleteBurn = async (req, res, next) => {
   const id = req.body.id;
+  console.log(id);
 
   try {
     const { data, error } = await supabase
