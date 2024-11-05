@@ -3,6 +3,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
+  mode: 'development',
   entry: './src/App.jsx',
   output: {
     filename: 'bundle.js',

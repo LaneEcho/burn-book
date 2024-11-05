@@ -8,6 +8,8 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import './container.scss';
 
+import { Link } from 'react-router-dom';
+
 import { useFetchBurns } from '../../hooks/fetchQuery.jsx';
 
 function Container() {
@@ -48,6 +50,7 @@ function Container() {
         <IconButton onClick={toggleTheme}>
           {darkMode ? <DarkModeIcon /> : <LightModeIcon />}
         </IconButton>
+        <Link to={'/signup'}>Sign Up</Link>
       </aside>
       <section className={`burn-entries ${darkMode ? 'dark' : ''}`}>
         {isLoading ? <p>Loading...</p> : allItems}

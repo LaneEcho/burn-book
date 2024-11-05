@@ -1,17 +1,24 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Feed from './Feed.jsx';
+import Feed from './Pages/Feed.jsx';
+import ErrorPage from './Pages/ErrorPage.jsx';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Feed />,
+    errorElement: <ErrorPage />,
   },
   {
-    path: '/login',
-    element: <div>this is login page</div>,
+    path: '/signup',
+    element: (
+      <div>
+        <h1>Sign Up Page</h1>
+      </div>
+    ),
+    errorElement: <ErrorPage />,
   },
 ]);
 
