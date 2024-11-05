@@ -27,6 +27,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
 
+// serve index at /signup too
+app.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, '../index.html'));
+});
+
 // will we need these when doing auth?
 
 // API routes

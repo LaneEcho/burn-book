@@ -5,6 +5,7 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Container from '../components/container/container.jsx';
+import { ThemeProvider } from '../context/ThemeContext.jsx';
 
 // queryClient handles caching, garbage collection, fetching, etc
 const queryClient = new QueryClient();
@@ -27,9 +28,11 @@ export default function Feed() {
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <Container />
-    </QueryClientProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <Container />
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }

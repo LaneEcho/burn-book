@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Feed from './Pages/Feed.jsx';
 import ErrorPage from './Pages/ErrorPage.jsx';
-import { ThemeProvider } from './context/ThemeContext.jsx';
+import './App.scss';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +16,7 @@ const router = createBrowserRouter([
     element: (
       <div>
         <h1>Sign Up Page</h1>
+        <p id="fetch">If you're from Africa, why are you white?</p>
       </div>
     ),
     errorElement: <ErrorPage />,
@@ -25,8 +26,4 @@ const router = createBrowserRouter([
 const container = document.getElementById('app');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 
-root.render(
-  <ThemeProvider>
-    <RouterProvider router={router} />
-  </ThemeProvider>
-);
+root.render(<RouterProvider router={router} />);

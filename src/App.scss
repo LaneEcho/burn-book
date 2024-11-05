@@ -1,0 +1,31 @@
+@import './variables';
+@import './mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: $light-pink;
+  font-family: $default-font;
+  font-size: 18px;
+  &.dark {
+    background-color: $primary-black;
+  }
+}
+
+header {
+  color: $primary-black;
+  background-color: $hot-pink;
+  text-align: center;
+  h1 {
+    font-family: 'Ransom', $default-font;
+    font-size: 4em;
+  }
+}
+
+#fetch {
+  color: aqua;
+}
