@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 
 // TODO:
@@ -26,7 +26,7 @@ export default function SignUp() {
       password: formData.get('password'),
     };
 
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email: formValues.email,
       phone: formValues.phone,
       password: formValues.password,
@@ -90,6 +90,11 @@ export default function SignUp() {
             </button>
           </div>
         </form>
+        <Link to={'/'}>
+          <button className="icon-button" disabled={loading}>
+            Nevermind
+          </button>
+        </Link>
       </div>
     </div>
   );
