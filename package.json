@@ -41,6 +41,7 @@
     "@babel/preset-react": "^7.18.6",
     "@tanstack/eslint-plugin-query": "^5.51.1",
     "babel-loader": "^9.1.2",
+    "connect-history-api-fallback": "^2.0.0",
     "css-loader": "^6.7.3",
     "dotenv-webpack": "^8.1.0",
     "html-webpack-plugin": "^5.5.1",

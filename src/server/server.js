@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackConfig = require('../../webpack.config');
+const historyApiFallback = require('connect-history-api-fallback');
 
 // path is a module for working with file paths
 const path = require('path');
@@ -11,6 +12,20 @@ const PORT = 3000;
 
 // create compiler
 const compiler = webpack(webpackConfig);
+
+// middleware to proxy requests through a specified index page
+app.use(
+  historyApiFallback({
+    verbose: true,
+    rewrites: [
+      {
+        from: /^\/getBurns.*$/, // ignore api calls
+        to: (context) => context.parsedUrl.path,
+      },
+    ],
+  })
+);
+
 app.use(
   webpackDevMiddleware(compiler, {
     publicPath: webpackConfig.output.publicPath,
@@ -26,23 +41,6 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
-
-// serve index at /signup too
-app.get('/signup', (req, res) => {
-  res.sendFile(path.join(__dirname, '../index.html'));
-});
-
-// will we need these when doing auth?
-
-// API routes
-// const APIRouter = express.Router();
-
-// APIRouter.get('/signup', (req, res) => {
-//   console.log('SIGNUP ROUTER');
-//   return res.json({ message: 'Did you just move here from Africa? Welcome!' });
-// });
-
-// app.use('/api', APIRouter); // idk
 
 // post request for new entry in Burn Book
 app.post('/getBurns', burnController.postBurn, (req, res) =>
