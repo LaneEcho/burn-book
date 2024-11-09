@@ -50,7 +50,7 @@ function Container() {
         <IconButton onClick={toggleTheme}>
           {darkMode ? <DarkModeIcon /> : <LightModeIcon />}
         </IconButton>
-        <Link to={'/signup'}>Sign Up</Link>
+        <Link to={'/login'}>Log In</Link>
       </aside>
       <section className={`burn-entries ${darkMode ? 'dark' : ''}`}>
         {isLoading ? <p>Loading...</p> : allItems}

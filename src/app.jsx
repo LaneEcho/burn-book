@@ -2,6 +2,8 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Feed from './Pages/Feed.jsx';
+import Login from './Pages/Login.jsx';
+import SignUp from './Pages/SignUp.jsx';
 import ErrorPage from './Pages/ErrorPage.jsx';
 import './App.scss';
 
@@ -13,12 +15,12 @@ const router = createBrowserRouter([
   },
   {
     path: '/signup',
-    element: (
-      <div>
-        <h1>Sign Up Page</h1>
-        <p id="fetch">If you're from Africa, why are you white?</p>
-      </div>
-    ),
+    element: <SignUp />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
     errorElement: <ErrorPage />,
   },
 ]);
