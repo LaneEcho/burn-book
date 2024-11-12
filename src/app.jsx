@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext.jsx';
 import Feed from './Pages/Feed.jsx';
 import Login from './Pages/Login.jsx';
 import SignUp from './Pages/SignUp.jsx';
@@ -28,4 +29,8 @@ const router = createBrowserRouter([
 const container = document.getElementById('app');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 
-root.render(<RouterProvider router={router} />);
+root.render(
+  <AuthProvider>
+    <RouterProvider router={router} />
+  </AuthProvider>
+);
