@@ -16,7 +16,7 @@ module.exports = {
       title: 'Development',
       template: './src/index.html',
     }),
-    new Dotenv(), // ????
+    new Dotenv(),
   ],
   module: {
     rules: [
