@@ -19,10 +19,10 @@ supabaseAuthMiddleware.logger = (req, res, next) => {
 
 supabaseAuthMiddleware.middleware = async (req, res, next) => {
   console.log('... entering auth middleware');
+
   const authHeader = req.headers.authorization;
 
-  console.log('AUTH HEADER HAPPENING?', authHeader);
-
+  console.log('authheader', authHeader);
   // if no auth headers, return status 401
   if (!authHeader) {
     console.log('we are returning bc no headers :(');
@@ -41,12 +41,7 @@ supabaseAuthMiddleware.middleware = async (req, res, next) => {
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
-  //   const authId = data.user.id;
-
-  //   const {
-  //     data: { user },
-  //   } = await supabase.auth.getUser();
-
+  // what do we need to pass on?
   req.user = data.user;
 
   return next();

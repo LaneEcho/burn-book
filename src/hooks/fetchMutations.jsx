@@ -3,10 +3,12 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 // add a burn - POST request
 export const addBurn = async (comment) => {
+  const jwt = 'hehe';
   const res = await fetch('/getBurns', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${jwt}`,
     },
     body: JSON.stringify(comment),
   });

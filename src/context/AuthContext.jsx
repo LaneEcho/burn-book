@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
-import { Session, User } from '@supabase/supabase-js';
 import { supabase } from '../lib/supabaseClient';
 
-// const AuthContext = createContext();
+//getSession is used client side
+
 const AuthContext = createContext({
   session: null,
   user: null,
@@ -19,9 +19,9 @@ export function AuthProvider({ children }) {
       const {
         data: { session },
         error,
-      } = await supabase.auth.getSession(); // might want to change this to getUser
+      } = await supabase.auth.getSession();
       if (error) throw error;
-      setSession(session);
+      setSession(session?.access_token);
       setUser(session?.user);
       setLoading(false);
     };

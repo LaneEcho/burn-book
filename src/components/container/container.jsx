@@ -26,7 +26,8 @@ function Container() {
   }
 
   if (!isLoading && data !== null) {
-    for (let i = 0; i < data.length; i++) {
+    // for (let i = 0; i < data.length; i++) {
+    for (let i = data.length - 1; i >= 0; i--) {
       allItems.push(
         <PostItem
           comment={data[i].message}
