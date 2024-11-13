@@ -34,6 +34,10 @@ app.use(
 
 const burnController = require('./controllers/burnController');
 
+const supabaseAuthMiddleware = require('./supabaseAuthMiddleware');
+
+app.use(supabaseAuthMiddleware.logger);
+
 // parse incoming requests
 app.use(express.json());
 
@@ -43,8 +47,11 @@ app.get('/', (req, res) => {
 });
 
 // post request for new entry in Burn Book
-app.post('/getBurns', burnController.postBurn, (req, res) =>
-  res.status(201).json(res.locals.result)
+app.post(
+  '/getBurns',
+  supabaseAuthMiddleware.middleware, // i think we want to put it here
+  burnController.postBurn,
+  (req, res) => res.status(201).json(res.locals.result)
 );
 
 // get request to retireve all entries

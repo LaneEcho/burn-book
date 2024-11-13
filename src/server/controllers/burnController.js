@@ -4,6 +4,8 @@ const burnController = {};
 
 // insert a new burn entry
 burnController.postBurn = async (req, res, next) => {
+  console.log('REQUEST', req.auth);
+
   const newBurn = req.body.message;
 
   try {
