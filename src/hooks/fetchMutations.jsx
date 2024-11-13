@@ -1,14 +1,17 @@
 // mutations are used to create/update/delete data or perform server side-effects
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { supabase } from '../lib/supabaseClient.js';
 
 // add a burn - POST request
 export const addBurn = async (comment) => {
-  const jwt = 'hehe';
+  const { data } = await supabase.auth.getSession();
+  console.log('add burn data session', data.session.access_token);
+
   const res = await fetch('/getBurns', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${jwt}`,
+      Authorization: `Bearer ${data.session.access_token}`,
     },
     body: JSON.stringify(comment),
   });

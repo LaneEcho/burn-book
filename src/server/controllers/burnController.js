@@ -6,13 +6,22 @@ const burnController = {};
 burnController.postBurn = async (req, res, next) => {
   console.log('... in post burn? controller');
   console.log('REQUEST', req.body);
+  console.log('REQUEST USER', req.user);
 
+  const meanGirl = req.user;
+  console.log('mean girl', meanGirl);
   const newBurn = req.body.message;
 
   try {
     const { data, error } = await supabase
       .from('burn_book')
-      .insert([{ message: newBurn }])
+      .insert([
+        {
+          message: newBurn,
+          username: meanGirl.user_metadata.username,
+          user_id: meanGirl.id,
+        },
+      ])
       .select() // Use select() to return the inserted row
       .single();
 
