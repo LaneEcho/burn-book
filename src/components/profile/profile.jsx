@@ -6,8 +6,6 @@ import './profile.scss';
 const Profile = () => {
   const { user, signOut } = useAuth();
 
-  console.log(user?.user_metadata.username);
-
   return (
     <div className="profile">
       <Link to={'/login'}>

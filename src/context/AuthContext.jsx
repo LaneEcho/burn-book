@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
       const {
         data: { session },
         error,
-      } = await supabase.auth.getSession();
+      } = await supabase.auth.getSession(); // might want to change this to getUser
       if (error) throw error;
       setSession(session);
       setUser(session?.user);
