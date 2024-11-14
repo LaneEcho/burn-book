@@ -2,6 +2,8 @@ const supabase = require('../databaseModel');
 
 const burnController = {};
 
+// how does supabase RLS check???
+
 // insert a new burn entry
 burnController.postBurn = async (req, res, next) => {
   console.log('... in post burn? controller');
@@ -9,7 +11,9 @@ burnController.postBurn = async (req, res, next) => {
   console.log('REQUEST USER', req.user);
 
   const meanGirl = req.user;
-  console.log('mean girl', meanGirl);
+
+  console.log('FUCK', req.headers.authorization);
+
   const newBurn = req.body.message;
 
   try {
@@ -25,13 +29,15 @@ burnController.postBurn = async (req, res, next) => {
       .select() // Use select() to return the inserted row
       .single();
 
+    console.log('returned', data);
+
     if (error) throw error;
 
     res.locals.result = data.id;
     return next();
   } catch (err) {
     return next({
-      log: `Express error in postBurn middleware: ${err}`,
+      log: `Express error in postBurn middleware: ${err.message}`,
       status: 500,
       message: { err: 'An error occurred' },
     });

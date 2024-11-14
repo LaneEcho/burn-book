@@ -28,6 +28,9 @@ export function AuthProvider({ children }) {
 
     const { data: listener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
+        if (_event === 'SIGNED_OUT' || _event === 'TOKEN_REFRESH_FAILED') {
+          console.log('Token has expired or user is signed out.');
+        }
         setSession(session);
         setUser(session?.user);
         setLoading(false);

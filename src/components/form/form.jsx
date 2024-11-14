@@ -23,7 +23,6 @@ function FormComponent(props) {
   const { darkMode } = useTheme();
 
   const { user } = useAuth();
-  console.log(user);
 
   const { mutate, isLoading } = useAddBurn({
     onSuccess: () => {

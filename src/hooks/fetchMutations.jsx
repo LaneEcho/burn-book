@@ -5,7 +5,6 @@ import { supabase } from '../lib/supabaseClient.js';
 // add a burn - POST request
 export const addBurn = async (comment) => {
   const { data } = await supabase.auth.getSession();
-  console.log('add burn data session', data.session.access_token);
 
   const res = await fetch('/getBurns', {
     method: 'POST',
@@ -26,7 +25,6 @@ export const useAddBurn = () => {
 
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['burns'] }); // invalidate cache
-      console.log('Girl on girl crime commmitted');
     },
   });
 };
