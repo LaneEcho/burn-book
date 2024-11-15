@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useTheme } from '../../context/ThemeContext.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
 import { useAddBurn } from '../../hooks/fetchMutations.jsx';
 import './form.scss';
 
@@ -20,6 +21,8 @@ function FormComponent(props) {
   const [disabled, setDisabled] = useState(true);
 
   const { darkMode } = useTheme();
+
+  const { user } = useAuth();
 
   const { mutate, isLoading } = useAddBurn({
     onSuccess: () => {
@@ -64,6 +67,15 @@ function FormComponent(props) {
     // debounce the action
     debouncedHandleChange(value);
   };
+
+  // no user
+  if (!user) {
+    return (
+      <div>
+        <h4>Log in to comment</h4>
+      </div>
+    );
+  }
 
   // add component later for visual feedback while waiting for promise to resolve
   if (isLoading) {

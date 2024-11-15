@@ -1,10 +1,13 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  mode: 'development',
+  entry: './src/App.jsx',
   output: {
     filename: 'bundle.js',
+    publicPath: '/',
     path: path.resolve(__dirname, './dist'),
   },
 
@@ -13,6 +16,7 @@ module.exports = {
       title: 'Development',
       template: './src/index.html',
     }),
+    new Dotenv(),
   ],
   module: {
     rules: [

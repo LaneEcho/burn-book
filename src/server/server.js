@@ -1,3 +1,8 @@
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackConfig = require('../../webpack.config');
+const historyApiFallback = require('connect-history-api-fallback');
+
 // path is a module for working with file paths
 const path = require('path');
 const express = require('express');
@@ -5,7 +10,33 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
+// create compiler
+const compiler = webpack(webpackConfig);
+
+// middleware to proxy requests through a specified index page
+app.use(
+  historyApiFallback({
+    verbose: true,
+    rewrites: [
+      {
+        from: /^\/getBurns.*$/, // ignore api calls
+        to: (context) => context.parsedUrl.path,
+      },
+    ],
+  })
+);
+
+app.use(
+  webpackDevMiddleware(compiler, {
+    publicPath: webpackConfig.output.publicPath,
+  })
+);
+
 const burnController = require('./controllers/burnController');
+
+const supabaseAuthMiddleware = require('./supabaseAuthMiddleware');
+
+app.use(supabaseAuthMiddleware.logger);
 
 // parse incoming requests
 app.use(express.json());
@@ -16,8 +47,11 @@ app.get('/', (req, res) => {
 });
 
 // post request for new entry in Burn Book
-app.post('/getBurns', burnController.postBurn, (req, res) =>
-  res.status(201).json(res.locals.result)
+app.post(
+  '/getBurns',
+  supabaseAuthMiddleware.middleware, // i think we want to put it here
+  burnController.postBurn,
+  (req, res) => res.status(201).json(res.locals.result)
 );
 
 // get request to retireve all entries

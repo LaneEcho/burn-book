@@ -7,7 +7,6 @@ import IconButton from '@mui/material/IconButton';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import './container.scss';
-
 import { useFetchBurns } from '../../hooks/fetchQuery.jsx';
 
 function Container() {
@@ -27,7 +26,8 @@ function Container() {
   }
 
   if (!isLoading && data !== null) {
-    for (let i = 0; i < data.length; i++) {
+    // for (let i = 0; i < data.length; i++) {
+    for (let i = data.length - 1; i >= 0; i--) {
       allItems.push(
         <PostItem
           comment={data[i].message}

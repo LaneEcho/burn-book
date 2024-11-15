@@ -1,23 +1,19 @@
-import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
-import LoginButton from '../../../lib/auth0/login.js';
-import LogoutButton from '../../../lib/auth0/logout.js';
-
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext.jsx';
 import './profile.scss';
 
 const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-
-  if (isLoading) {
-    return <div className="loading">Loading ...</div>;
-  }
+  const { user, signOut } = useAuth();
 
   return (
     <div className="profile">
-      <LoginButton></LoginButton>
-      <LogoutButton></LogoutButton>
+      <Link to={'/login'}>
+        <button>Log In</button>
+      </Link>
+      <button onClick={() => signOut()}>Log Out</button>
       <h3>{`Welcome to North Shore, ${
-        isAuthenticated ? user.name : `friend`
+        user ? user?.user_metadata.username : `Biatch`
       }`}</h3>
     </div>
   );
