@@ -1,35 +1,32 @@
-const supabase = require('../databaseModel');
+const { supabase, supabaseAuth } = require('../databaseModel');
 
 const burnController = {};
 
-// how does supabase RLS check???
-
 // insert a new burn entry
 burnController.postBurn = async (req, res, next) => {
-  console.log('... in post burn? controller');
-  console.log('REQUEST', req.body);
-  console.log('REQUEST USER', req.user);
+  const authHeader = req.headers.authorization;
 
-  const meanGirl = req.user;
+  // if no auth headers, return status 401
+  if (!authHeader) {
+    console.log('we are returning bc no headers :(');
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
 
-  console.log('FUCK', req.headers.authorization);
-
-  const newBurn = req.body.message;
+  // check for JWT access token
+  const token = authHeader.split(' ')[1];
 
   try {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAuth(token)
       .from('burn_book')
       .insert([
         {
-          message: newBurn,
-          username: meanGirl.user_metadata.username,
-          user_id: meanGirl.id,
+          message: req.body.message,
+          username: req.user.user_metadata.username,
+          user_id: req.user.id,
         },
       ])
-      .select() // Use select() to return the inserted row
+      .select()
       .single();
-
-    console.log('returned', data);
 
     if (error) throw error;
 
