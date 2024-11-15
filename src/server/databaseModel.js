@@ -9,4 +9,26 @@ const supabaseKey = process.env.SUPABASE_KEY;
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-module.exports = supabase;
+const supabaseAuth = (accessToken) => {
+  return createClient(supabaseUrl, supabaseKey, {
+    db: {
+      schema: 'public',
+    },
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+    },
+    global: {
+      headers: accessToken
+        ? {
+            Authorization: `Bearer ${accessToken}`,
+          }
+        : null,
+    },
+  });
+};
+
+module.exports = {
+  supabase,
+  supabaseAuth,
+};
