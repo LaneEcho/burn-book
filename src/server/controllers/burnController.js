@@ -1,16 +1,31 @@
-const supabase = require('../databaseModel');
+const { supabase, supabaseAuth } = require('../databaseModel');
 
 const burnController = {};
 
 // insert a new burn entry
 burnController.postBurn = async (req, res, next) => {
-  const newBurn = req.body.message;
+  const authHeader = req.headers.authorization;
+
+  // if no auth headers, return status 401
+  if (!authHeader) {
+    console.log('we are returning bc no headers :(');
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+
+  // check for JWT access token
+  const token = authHeader.split(' ')[1];
 
   try {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAuth(token)
       .from('burn_book')
-      .insert([{ message: newBurn }])
-      .select() // Use select() to return the inserted row
+      .insert([
+        {
+          message: req.body.message,
+          username: req.user.user_metadata.username,
+          user_id: req.user.id,
+        },
+      ])
+      .select()
       .single();
 
     if (error) throw error;
@@ -19,7 +34,7 @@ burnController.postBurn = async (req, res, next) => {
     return next();
   } catch (err) {
     return next({
-      log: `Express error in postBurn middleware: ${err}`,
+      log: `Express error in postBurn middleware: ${err.message}`,
       status: 500,
       message: { err: 'An error occurred' },
     });
@@ -32,7 +47,7 @@ burnController.getBurns = async (req, res, next) => {
     const { data, error } = await supabase
       .from('burn_book')
       .select('*')
-      .order('id', { ascending: false });
+      .order('inserted_at', { ascending: false });
 
     if (error) throw error;
 
@@ -74,6 +89,7 @@ burnController.getBurnById = async (req, res, next) => {
 // delete a burn from database
 burnController.deleteBurn = async (req, res, next) => {
   const id = req.body.id;
+  console.log(id);
 
   try {
     const { data, error } = await supabase

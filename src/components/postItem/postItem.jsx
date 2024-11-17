@@ -1,21 +1,34 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
+import { useDeleteBurn } from '../../hooks/fetchMutations.jsx';
+import UpdatePostItem from './UpdatePostItem.jsx';
 import '../form/form.jsx';
 import './postItem.scss';
-import UpdatePostItem from './UpdatePostItem.jsx';
 
-function PostItem(props) {
+function PostItem({ id, comment }) {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  // state for modal
   const [modalState, setModalState] = useState(false);
 
-  // delete function
-  const handleDelete = async (event) => {
-    // confirm that burn will be deleted (true)
+  const { mutate: deleteBurn, isLoading } = useDeleteBurn({
+    onSuccess: () => {
+      setMessage('Entry successfully deleted');
+    },
+    onError: (error) => {
+      setMessage(`Error deleting entry: ${error.message}`);
+    },
+  });
+
+  const handleDelete = () => {
+    if (window.confirm('Delete this entry?')) {
+      deleteBurn({ id: id });
+    }
+  };
+
+  const handleDelete2 = async (event) => {
     const result = confirm('Delete this entry?');
     if (result) {
       // in case we need to track if something is loading for UX
-      setLoading(true);
+      // setLoading(true);
 
       try {
         let res = await fetch('/getBurns', {
@@ -24,7 +37,7 @@ function PostItem(props) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            id: props.id,
+            id: id,
           }),
         });
 
@@ -53,7 +66,7 @@ function PostItem(props) {
 
   return (
     <div className="post-item">
-      <p>{props.comment}</p>
+      <p>{comment}</p>
       <button className="edit-button" onClick={handleUpdate}>
         edit
       </button>
@@ -62,7 +75,7 @@ function PostItem(props) {
       </button>
       {modalState && (
         <div className="modal" toggle={modalState.toString()}>
-          <UpdatePostItem id={props.id} open={setModalState} />
+          <UpdatePostItem id={id} open={setModalState} />
         </div>
       )}
     </div>

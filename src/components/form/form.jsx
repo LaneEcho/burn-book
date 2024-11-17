@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useTheme } from '../../context/ThemeContext.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
+import { useAddBurn } from '../../hooks/fetchMutations.jsx';
 import './form.scss';
 
 // declare a function to debounce
@@ -16,56 +18,34 @@ function debounce(callback, waitTime) {
 function FormComponent(props) {
   const [comment, setComment] = useState('');
   const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
 
   const { darkMode } = useTheme();
 
-  // async function to submit text
-  const handleSubmit = async (event) => {
+  const { user } = useAuth();
+
+  const { mutate, isLoading } = useAddBurn({
+    onSuccess: () => {
+      setMessage('Girl on Girl Crime Committed');
+    },
+    onError: (error) => {
+      setMessage(
+        `Fetch didn't happen - Error occurred in add burn post request: ${error.message}`
+      );
+    },
+  });
+
+  const handleSubmit = (event) => {
     event.preventDefault();
 
-    // do not submit if empty string
-    // could also throttle API calls in the future
     if (comment.trim() !== '') {
-      setLoading(true);
-
-      try {
-        // send POST request
-        let res = await fetch('/getBurns', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            message: comment,
-          }),
-        });
-        let resJson = await res.json();
-        if (res.status === 201) {
-          setComment(''); // change comment back to empty string
-          setMessage('Girl on Girl Crime Committed'); // tell us entry has been submitted
-        } else {
-          setMessage('Error occurred in the post request');
-        }
-      } catch (err) {
-        console.log(err);
-        setMessage(
-          "Fetch didn't happen - Error occurred fetching data in post request"
-        );
-      }
-
-      setLoading(false); // Set loading back to false after the API call is completed
+      mutate({ message: comment });
+      setComment('');
       setDisabled(true);
-    }
-    // alert so comment is not empty string
-    else {
+    } else {
       setDisabled(true);
       alert('Please write a comment');
     }
-
-    // we could just add this as a post item - figure out how to optimize (possible caching?)
-    // get request to get whatever we just sent
   };
 
   // debounced version of handleChange with 400ms delay
@@ -88,8 +68,17 @@ function FormComponent(props) {
     debouncedHandleChange(value);
   };
 
+  // no user
+  if (!user) {
+    return (
+      <div>
+        <h4>Log in to comment</h4>
+      </div>
+    );
+  }
+
   // add component later for visual feedback while waiting for promise to resolve
-  if (loading) {
+  if (isLoading) {
     return <div className="loading">Loading...</div>;
   }
 

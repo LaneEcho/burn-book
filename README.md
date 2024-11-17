@@ -57,7 +57,8 @@ _Coming soon_!
 
 <br>
 
-[![JavaScript][JavaScript]][JavaScript-url] [![React][React.js]][React-url] ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) [![HTML5][HTML5]][HTML5-url] [![SASS][SASS]][SASS-url] ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
+[![JavaScript][JavaScript]][JavaScript-url] [![React][React.js]][React-url] ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) [![HTML5][HTML5]][HTML5-url] [![SASS][SASS]][SASS-url] ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black) ![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)
+![React-Query](https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=ReactQuery&logoColor=white)![React-Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 
 <br>
 
@@ -65,12 +66,12 @@ _Coming soon_!
 
 | Feature                                 | Status |
 | --------------------------------------- | ------ |
-| CSS to SASS                             | ✅     |
+| Auth                                    | ⏳     |
 | PostgreSQL database                     | ✅     |
 | Write server with Express               | ✅     |
-| Update                                  | ⏳     |
+| Update                                  | ✅     |
 | Delete                                  | ✅     |
-| New Burns are fetched after post        | ⏳     |
+| Query/ Cache Asynchronous State         | ⏳     |
 | Testing w/ Jest + React Testing Library | ⏳     |
 | Convert to TypeScript                   | ⏳     |
 | Image uploads                           | ⏳     |

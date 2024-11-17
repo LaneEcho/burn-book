@@ -4,7 +4,8 @@
   "description": "For when you want to say something mean behind a girl's back.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --open --hot",
+    "dev": "concurrently \"webpack-dev-server --mode development\" \"nodemon src/server/server.js\"",
+    "develop": "webpack-dev-server --mode development",
     "start": "nodemon src/server/server.js",
     "build": "webpack --mode production"
   },
@@ -20,23 +21,31 @@
   },
   "homepage": "https://github.com/LaneEcho/burn-book#readme",
   "dependencies": {
-    "@auth0/auth0-react": "^2.2.4",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.2",
     "@mui/material": "^5.15.2",
-    "@supabase/supabase-js": "^2.43.5",
+    "@supabase/auth-ui-react": "^0.4.7",
+    "@supabase/auth-ui-shared": "^0.1.8",
+    "@supabase/supabase-js": "^2.46.0",
+    "@tanstack/react-query": "^5.51.1",
+    "@tanstack/react-query-devtools": "^5.51.1",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.27.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
     "@babel/preset-react": "^7.18.6",
+    "@tanstack/eslint-plugin-query": "^5.51.1",
     "babel-loader": "^9.1.2",
+    "concurrently": "^9.1.0",
+    "connect-history-api-fallback": "^2.0.0",
     "css-loader": "^6.7.3",
+    "dotenv-webpack": "^8.1.0",
     "html-webpack-plugin": "^5.5.1",
     "nodemon": "^3.0.1",
     "sass": "^1.63.6",
@@ -44,6 +53,7 @@
     "style-loader": "^3.3.2",
     "webpack": "^5.79.0",
     "webpack-cli": "^5.0.1",
+    "webpack-dev-middleware": "^7.4.2",
     "webpack-dev-server": "^4.13.3"
   }
 }
