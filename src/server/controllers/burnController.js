@@ -47,7 +47,7 @@ burnController.getBurns = async (req, res, next) => {
     const { data, error } = await supabase
       .from('burn_book')
       .select('*')
-      .order('id', { ascending: false });
+      .order('inserted_at', { ascending: false });
 
     if (error) throw error;
 
