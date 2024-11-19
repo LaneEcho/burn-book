@@ -24,16 +24,7 @@ function FormComponent(props) {
 
   const { user } = useAuth();
 
-  const { mutate, isLoading } = useAddBurn({
-    onSuccess: () => {
-      setMessage('Girl on Girl Crime Committed');
-    },
-    onError: (error) => {
-      setMessage(
-        `Fetch didn't happen - Error occurred in add burn post request: ${error.message}`
-      );
-    },
-  });
+  const { mutate, isLoading } = useAddBurn();
 
   const handleSubmit = (event) => {
     event.preventDefault();
