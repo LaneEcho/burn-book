@@ -4,7 +4,7 @@ import UpdatePostItem from './UpdatePostItem.jsx';
 import '../form/form.jsx';
 import './postItem.scss';
 
-function PostItem({ id, comment }) {
+function PostItem({ id, comment, username }) {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [modalState, setModalState] = useState(false);
@@ -67,6 +67,7 @@ function PostItem({ id, comment }) {
   return (
     <div className="post-item">
       <p>{comment}</p>
+      <p className="username">@{username}</p>
       <button className="edit-button" onClick={handleUpdate}>
         edit
       </button>

@@ -7,6 +7,11 @@ p {
   margin-bottom: 10px;
 }
 
+.username {
+  font-family: $default-font;
+  font-size: 0.75rem;
+}
+
 .post-item {
   font-family: 'handwriting', $default-font;
   font-size: 35px;
