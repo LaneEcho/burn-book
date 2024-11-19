@@ -86,6 +86,43 @@ burnController.getBurnById = async (req, res, next) => {
   }
 };
 
+// update an entry to make it meaner
+burnController.updateBurn = async (req, res, next) => {
+  const authHeader = req.headers.authorization;
+
+  // if no auth headers, return status 401
+  if (!authHeader) {
+    console.log('we are returning bc no headers :(');
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+
+  // check for JWT access token
+  const token = authHeader.split(' ')[1];
+
+  const updatedBurn = req.body.message;
+
+  const { id } = req.params;
+
+  try {
+    const { data, error } = await supabaseAuth(token)
+      .from('burn_book')
+      .update({ message: updatedBurn })
+      .eq('id', id)
+      .single();
+
+    if (error) throw error;
+
+    res.locals.result = data.id;
+    return next();
+  } catch (err) {
+    return next({
+      log: `Express error in updateBurn middleware: ${err.message}`,
+      status: 500, // what is right code for update?
+      message: { err: 'An error occurred' },
+    });
+  }
+};
+
 // delete a burn from database
 burnController.deleteBurn = async (req, res, next) => {
   const id = req.body.id;
@@ -106,30 +143,6 @@ burnController.deleteBurn = async (req, res, next) => {
   } catch (err) {
     return next({
       log: `Express error in deleteBurn middleware: ${err}`,
-      status: 500,
-      message: { err: 'An error occurred' },
-    });
-  }
-};
-
-// update an entry to make it meaner
-burnController.updateBurn = async (req, res, next) => {
-  const updatedData = req.body.message;
-  const id = req.params.id;
-
-  try {
-    const { data, error } = await supabase
-      .from('burn_book')
-      .update({ message: updatedData })
-      .eq('id', id)
-      .single();
-
-    if (error) throw error;
-
-    res.status(200).json({ data });
-  } catch (err) {
-    return next({
-      log: `Express error in updateBurn middleware: ${err}`,
       status: 500,
       message: { err: 'An error occurred' },
     });
