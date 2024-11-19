@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './postItem.scss';
 import { useFetchBurn } from '../../hooks/fetchQuery.jsx';
+import { useUpdateBurn } from '../../hooks/fetchMutations.jsx';
+
+// TODO: probably want to debounce this input change
 
 function UpdatePostItem({ id, open }) {
   const [comment, setComment] = useState('');
-  const [message, setMessage] = useState('');
 
   const { isLoading, error, data } = useFetchBurn(id);
+
+  const { mutate } = useUpdateBurn();
 
   // useEffect to handle data changes
   useEffect(() => {
@@ -16,34 +20,13 @@ function UpdatePostItem({ id, open }) {
   }, [data, isLoading, error]);
 
   // update function
+  // id needs to be id of burn entry
   const handleUpdate = async (event) => {
     event.preventDefault();
 
-    try {
-      let res = await fetch(`getBurns/${id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: comment,
-        }),
-      });
+    mutate({ message: comment, id: data.id });
 
-      let resJson = await res.json();
-
-      if (res.status === 200) {
-        setMessage('Girl on Girl Crime Updated');
-        open();
-      } else {
-        setMessage('Error occurred in the patch request');
-      }
-    } catch (err) {
-      console.log(err);
-      setMessage(
-        "Fetch didn't happen - Error occurred fetching data in patch request"
-      );
-    }
+    // we have got to refactor this so we can close the modal
   };
 
   if (isLoading) {

@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '../lib/supabaseClient.js';
 
 // add a burn - POST request
-export const addBurn = async (comment) => {
+export const addBurn = async (burn) => {
   const { data } = await supabase.auth.getSession();
 
   const res = await fetch('/getBurns', {
@@ -12,7 +12,7 @@ export const addBurn = async (comment) => {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${data.session.access_token}`,
     },
-    body: JSON.stringify(comment),
+    body: JSON.stringify(burn),
   });
   return res.json();
 };
@@ -22,6 +22,34 @@ export const useAddBurn = () => {
 
   return useMutation({
     mutationFn: addBurn,
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['burns'] }); // invalidate cache
+    },
+  });
+};
+
+// update a burn - PATCH request
+// need an id?
+export const updateBurn = async (burn) => {
+  const { data } = await supabase.auth.getSession();
+
+  const res = await fetch(`getBurns/${burn.id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${data.session.access_token}`,
+    },
+    body: JSON.stringify(burn),
+  });
+  return res.json();
+};
+
+export const useUpdateBurn = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: updateBurn,
 
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['burns'] }); // invalidate cache
