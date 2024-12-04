@@ -22,21 +22,23 @@ p {
   margin: $standard * 2;
 }
 
-.modal {
-  width: 300px;
+.update-post {
+  width: 25rem;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  background-color: aqua;
+  background-color: $hot-pink;
+  border: 1px solid $primary-black;
 
   form {
     margin: $standard;
 
     label {
+      font-family: $default-font;
       color: $primary-black;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
     }
 
     input {
@@ -45,7 +47,7 @@ p {
       height: 100px;
       resize: vertical;
       padding: $standard * 2;
-      border: 1px solid $hot-pink;
+      border: 1px solid $primary-black;
       text-align: center;
       overflow: scroll;
       font-family: $default-font;
@@ -67,8 +69,8 @@ p {
   @include button($hot-pink, $primary-white);
 }
 
-.delete-button {
-  @include button($hot-pink, $primary-white);
+.secondary-button {
+  @include button($primary-white, $hot-pink);
 }
 
 // .popover-container {

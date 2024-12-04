@@ -27,6 +27,7 @@ function UpdatePostItem({ id, open }) {
     mutate({ message: comment, id: data.id });
 
     // we have got to refactor this so we can close the modal
+    open(false);
   };
 
   if (isLoading) {
@@ -50,6 +51,13 @@ function UpdatePostItem({ id, open }) {
         />
         <button type="submit" className="submit-button">
           Submit
+        </button>
+        <button
+          type="button"
+          className="secondary-button"
+          onClick={() => open(false)}
+        >
+          Cancel
         </button>
       </form>
     </div>
