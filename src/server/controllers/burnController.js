@@ -103,6 +103,12 @@ burnController.updateBurn = async (req, res, next) => {
 
   const { id } = req.params;
 
+  // if missing information
+  if (!id || !updatedBurn) {
+    console.log('Missing required parameters');
+    return res.status(400).json({ message: 'Invalid request data' });
+  }
+
   try {
     const { data, error } = await supabaseAuth(token)
       .from('burn_book')
@@ -110,16 +116,23 @@ burnController.updateBurn = async (req, res, next) => {
       .eq('id', id)
       .single();
 
-    if (error) throw error;
+    if (error) {
+      console.log('Supabase error:', error);
+      return res.status(500).json({ message: 'Database operation failed' });
+    }
+
+    if (!data) {
+      console.log('Burn not found');
+      return res.status(404).json({ message: 'Burn not found' });
+    }
 
     res.locals.result = data;
 
     return next();
   } catch (err) {
-    // this is the supabase error
     return next({
       log: `Express error in updateBurn middleware: ${err.message}`,
-      status: 500, // what is right code for update?
+      status: 500,
       message: { err: 'An error occurred' },
     });
   }
