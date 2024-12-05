@@ -49,7 +49,7 @@ app.get('/', (req, res) => {
 // post request for new entry in Burn Book
 app.post(
   '/getBurns',
-  supabaseAuthMiddleware.middleware, // i think we want to put it here
+  supabaseAuthMiddleware.middleware,
   burnController.postBurn,
   (req, res) => res.status(201).json(res.locals.result)
 );
@@ -70,9 +70,14 @@ app.delete('/getBurns', burnController.deleteBurn, (req, res) => {
 });
 
 // update an entry
-app.patch('/getBurns/:id', burnController.updateBurn, (req, res) => {
-  res.status(200).json(res.locals.result);
-});
+app.patch(
+  '/getBurns/:id',
+  supabaseAuthMiddleware.middleware,
+  burnController.updateBurn,
+  (req, res) => {
+    res.status(200).json(res.locals.result);
+  }
+);
 
 // Error Handling- catch all
 app.use((req, res) => res.sendStatus(404));

@@ -32,6 +32,7 @@ function Container() {
           comment={data[i].message}
           key={i}
           id={data[i].id}
+          username={data[i].username}
           onDelete={() => handleDelete(i)}
         />
       );
