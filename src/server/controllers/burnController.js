@@ -114,16 +114,11 @@ burnController.updateBurn = async (req, res, next) => {
       .from('burn_book')
       .update({ message: updatedBurn })
       .eq('id', id)
-      .single();
+      .select();
 
     if (error) {
       console.log('Supabase error:', error);
       return res.status(500).json({ message: 'Database operation failed' });
-    }
-
-    if (!data) {
-      console.log('Burn not found');
-      return res.status(404).json({ message: 'Burn not found' });
     }
 
     res.locals.result = data;
