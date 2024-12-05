@@ -112,9 +112,11 @@ burnController.updateBurn = async (req, res, next) => {
 
     if (error) throw error;
 
-    res.locals.result = data.id;
+    res.locals.result = data;
+
     return next();
   } catch (err) {
+    // this is the supabase error
     return next({
       log: `Express error in updateBurn middleware: ${err.message}`,
       status: 500, // what is right code for update?
