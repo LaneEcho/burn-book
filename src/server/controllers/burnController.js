@@ -135,20 +135,36 @@ burnController.updateBurn = async (req, res, next) => {
 
 // delete a burn from database
 burnController.deleteBurn = async (req, res, next) => {
-  console.log('IN DELETE BURN', id);
-  // const id = req.body.id;
+  const authHeader = req.headers.authorization;
+
+  // if no auth headers, return status 401
+  if (!authHeader) {
+    console.log('we are returning bc no headers :(');
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+
+  const token = authHeader.split(' ')[1];
+
   const { id } = req.params;
 
+  if (!id) {
+    console.log('Missing required parameters');
+    return res.status(400).json({ message: 'Invalid request data' });
+  }
+
   try {
-    const { data, error } = await supabase
+    const { error } = await supabaseAuth(token)
       .from('burn_book')
       .delete()
       .eq('id', id)
-      .single();
+      .select();
 
-    if (error) throw error;
+    if (error) {
+      console.log('Supabase error:', error);
+      return res.status(500).json({ message: 'Database operation failed' });
+    }
 
-    res.locals.result = data;
+    // don't need a response body for delete w/ status 204
 
     return next();
   } catch (err) {
