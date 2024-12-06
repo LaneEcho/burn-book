@@ -135,8 +135,9 @@ burnController.updateBurn = async (req, res, next) => {
 
 // delete a burn from database
 burnController.deleteBurn = async (req, res, next) => {
-  const id = req.body.id;
-  console.log(id);
+  console.log('IN DELETE BURN', id);
+  // const id = req.body.id;
+  const { id } = req.params;
 
   try {
     const { data, error } = await supabase
@@ -148,7 +149,7 @@ burnController.deleteBurn = async (req, res, next) => {
     if (error) throw error;
 
     res.locals.result = data;
-    res.sendStatus(204);
+
     return next();
   } catch (err) {
     return next({

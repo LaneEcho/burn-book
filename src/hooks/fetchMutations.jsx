@@ -58,14 +58,17 @@ export const useUpdateBurn = () => {
 };
 
 // delete a burn - DELETE request
-export const deleteBurn = async (id) => {
-  console.log('ID', id);
-  const res = await fetch('/getBurns', {
+export const deleteBurn = async (burn) => {
+  const { data } = await supabase.auth.getSession();
+
+  console.log('DELETE BURN', burn.id);
+  const res = await fetch(`getBurns/${burn.id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${data.session.access_token}`,
     },
-    body: JSON.stringify(id),
+    body: JSON.stringify(burn),
   });
   return res.json();
 };
