@@ -12,19 +12,14 @@ function PostItem({ id, comment, username }) {
 
   const { user } = useAuth();
 
-  const { mutate: deleteBurn, isLoading } = useDeleteBurn({
-    onSuccess: () => {
-      setMessage('Entry successfully deleted');
-    },
-    onError: (error) => {
-      setMessage(`Error deleting entry: ${error.message}`);
-    },
-  });
+  const { mutate } = useDeleteBurn();
 
-  const handleDelete = () => {
+  const handleDelete = (event) => {
+    event.preventDefault();
+
     if (user !== undefined && user.user_metadata.username === username) {
       if (window.confirm('Delete this entry?')) {
-        deleteBurn({ id: id });
+        mutate({ id: id });
       }
     }
   };
