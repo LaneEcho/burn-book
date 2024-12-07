@@ -65,9 +65,14 @@ app.get('/getBurns/:id', burnController.getBurnById, (req, res) =>
 );
 
 // delete an entry
-app.delete('/getBurns', burnController.deleteBurn, (req, res) => {
-  res.status(204).json(res.locals.result);
-});
+app.delete(
+  '/getBurns/:id',
+  supabaseAuthMiddleware.middleware,
+  burnController.deleteBurn,
+  (req, res) => {
+    res.status(204).json(res.locals.result);
+  }
+);
 
 // update an entry
 app.patch(

@@ -30,7 +30,6 @@ export const useAddBurn = () => {
 };
 
 // update a burn - PATCH request
-// need an id?
 export const updateBurn = async (burn) => {
   const { data } = await supabase.auth.getSession();
 
@@ -58,16 +57,18 @@ export const useUpdateBurn = () => {
 };
 
 // delete a burn - DELETE request
-export const deleteBurn = async (id) => {
-  console.log('ID', id);
-  const res = await fetch('/getBurns', {
+export const deleteBurn = async (burn) => {
+  const { data } = await supabase.auth.getSession();
+
+  const res = await fetch(`getBurns/${burn.id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${data.session.access_token}`,
     },
-    body: JSON.stringify(id),
   });
-  return res.json();
+
+  return;
 };
 
 export const useDeleteBurn = () => {
@@ -78,7 +79,6 @@ export const useDeleteBurn = () => {
 
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['burns'] });
-      console.log('Girl on girl crime deleted');
     },
   });
 };
