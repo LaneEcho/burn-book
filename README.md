@@ -16,7 +16,14 @@ What if The Plastics had an app for their Burn Book, instead of a physical book?
 
 <br>
 
-## Create your own Burn Book 💅
+## Contributing 💅
+
+### Tech Stack
+
+<br>
+
+[![JavaScript][JavaScript]][JavaScript-url] [![React][React.js]][React-url] ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) [![HTML5][HTML5]][HTML5-url] [![SASS][SASS]][SASS-url] ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black) ![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)
+![React-Query](https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=ReactQuery&logoColor=white)![React-Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 
 ### Prerequisites
 
@@ -24,12 +31,10 @@ What if The Plastics had an app for their Burn Book, instead of a physical book?
 
 ### Installation
 
-1. Fork and close this repository to your local machine
-2. Install NPM packages: `npm install`
-3. Run `npm run start` to spin up the server
-4. Run `npm run dev` to start up the application
-5. Navigate to http://localhost:8080 in your browser
-6. Commit girl on girl crime ✨
+1. Install dependencies: `npm install`
+2. Run `npm run dev` to start up the application - this will spin up the server and frontend
+3. Navigate to http://localhost:8080 in your browser
+4. Commit girl on girl crime ✨
 
 ### Testing
 
@@ -50,15 +55,6 @@ _Coming soon_!
 ## Questions and Support
 
 _Coming soon_!
-
-<br>
-
-## Tech Stack
-
-<br>
-
-[![JavaScript][JavaScript]][JavaScript-url] [![React][React.js]][React-url] ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) [![HTML5][HTML5]][HTML5-url] [![SASS][SASS]][SASS-url] ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black) ![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)
-![React-Query](https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=ReactQuery&logoColor=white)![React-Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 
 <br>
 
