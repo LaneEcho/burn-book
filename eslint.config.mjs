@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import globals from 'globals';
 import pluginReact from 'eslint-plugin-react';
 import { defineConfig } from 'eslint/config';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
 export default defineConfig([
   {
@@ -24,4 +25,5 @@ export default defineConfig([
     // Note: there should be no other properties in this object
     ignores: ['dist/*', 'webpack.config.js'],
   },
+  eslintConfigPrettier,
 ]);
