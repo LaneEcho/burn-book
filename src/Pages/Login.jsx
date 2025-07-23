@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router';
+import LinkButton from '../components/ui/button/LinkButton.jsx';
+import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 
 // TODO:
@@ -66,13 +67,9 @@ export default function Login() {
         </div>
       </form>
 
-      <p>Don't have an account? </p>
+      <p>Don&apos;t have an account? </p>
       <Link to={'/signup'}>Sign Up</Link>
-      <Link to={'/'}>
-        <button className="icon-button" disabled={loading}>
-          Nevermind
-        </button>
-      </Link>
+      <LinkButton to={'/'}>Nevermind</LinkButton>
     </div>
   );
 }
