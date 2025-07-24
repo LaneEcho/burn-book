@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../../lib/supabaseClient';
+import { supabase } from '../../lib/supabaseClient.js';
 import LinkButton from '../../components/ui/button/LinkButton.jsx';
 
 // TODO:
@@ -8,7 +8,7 @@ import LinkButton from '../../components/ui/button/LinkButton.jsx';
 // make not ugly
 // handle errors
 
-export default function SignUp() {
+export default function ForgotPassword() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ export default function SignUp() {
   return (
     <>
       <h1>Welcome to North Shore</h1>
-      <p className="description">Create an account</p>
+      <p className="description">Forgot password?</p>
       <form onSubmit={handleSignup}>
         <div
           style={{

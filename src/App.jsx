@@ -3,8 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { AuthProvider } from './context/authContext.jsx';
 import Feed from './Pages/Feed.jsx';
-import Login from './Pages/Login.jsx';
-import SignUp from './Pages/SignUp.jsx';
+import LoginPage from './Pages/LoginPage.jsx';
+import SignUpPage from './Pages/SignUpPage.jsx';
+import ForgotPasswordPage from './Pages/PasswordPage.jsx';
 import ErrorPage from './Pages/ErrorPage.jsx';
 import './App.scss';
 
@@ -16,12 +17,17 @@ const router = createBrowserRouter([
   },
   {
     path: '/signup',
-    element: <SignUp />,
+    element: <SignUpPage />,
     errorElement: <ErrorPage />,
   },
   {
     path: '/login',
-    element: <Login />,
+    element: <LoginPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/forgotpassword',
+    element: <ForgotPasswordPage />,
     errorElement: <ErrorPage />,
   },
 ]);
