@@ -19,6 +19,7 @@ export default defineConfig([
     rules: {
       'no-unused-vars': 'warn',
       'no-undef': 'warn',
+      'react/prop-types': 'ignore',
     },
   },
   {

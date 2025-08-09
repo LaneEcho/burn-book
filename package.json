@@ -29,13 +29,13 @@
     "@supabase/auth-ui-react": "^0.4.7",
     "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/supabase-js": "^2.46.0",
-    "@tanstack/react-query": "^5.51.1",
-    "@tanstack/react-query-devtools": "^5.51.1",
+    "@tanstack/react-query": "^5.84.2",
+    "@tanstack/react-query-devtools": "^5.84.2",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.27.0"
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "react-router": "^7.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
