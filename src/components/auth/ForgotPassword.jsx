@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { supabase } from '../../lib/supabaseClient.js';
 import LinkButton from '../../components/ui/button/LinkButton.jsx';
 
