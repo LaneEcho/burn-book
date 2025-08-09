@@ -1,0 +1,10 @@
+@import '../../../variables';
+@import '../../../mixins';
+
+.link-button {
+  @include button($hot-pink, $primary-white);
+}
+
+.button {
+  @include button($hot-pink, $primary-white);
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router';
-import { supabase } from '../lib/supabaseClient';
+import LinkButton from '../../components/ui/button/LinkButton.jsx';
+import { useNavigate } from 'react-router';
+import { supabase } from '../../lib/supabaseClient';
 
 // TODO:
 // make not ugly
@@ -40,10 +41,18 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <>
       <h1>Welcome to North Shore</h1>
       <form onSubmit={handleLogin}>
-        <div>
+        <div
+          style={{
+            marginTop: '1em',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '10px',
+          }}
+        >
           <input
             name="email"
             className="inputField"
@@ -58,21 +67,16 @@ export default function Login() {
             placeholder="Password"
             required={true}
           />
-        </div>
-        <div>
-          <button className="icon-button" disabled={loading}>
+
+          <button className="button" disabled={loading}>
             {loading ? <span>Please Wait</span> : <span>Log In</span>}
           </button>
         </div>
       </form>
 
-      <p>Don't have an account? </p>
-      <Link to={'/signup'}>Sign Up</Link>
-      <Link to={'/'}>
-        <button className="icon-button" disabled={loading}>
-          Nevermind
-        </button>
-      </Link>
-    </div>
+      <p>Don&apos;t have an account? </p>
+      <LinkButton to={'/signup'}>Sign Up</LinkButton>
+      <LinkButton to={'/'}>Nevermind</LinkButton>
+    </>
   );
 }

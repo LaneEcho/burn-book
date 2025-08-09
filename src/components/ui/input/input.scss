@@ -1,0 +1,17 @@
+@import '../../../variables';
+@import '../../../mixins';
+
+.inputField {
+  &:invalid[focused='true'] + .custom-rule {
+    display: block;
+  }
+
+  &:invalid[focused='true'] {
+    border: 2px solid red;
+    color: red;
+  }
+
+  &:valid {
+    border: 0.12rem solid green;
+  }
+}
