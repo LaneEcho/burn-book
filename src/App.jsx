@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router';
 import { AuthProvider } from './context/authContext.jsx';
 import Feed from './Pages/Feed.jsx';
 import Login from './Pages/Login.jsx';
