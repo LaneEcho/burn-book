@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabaseClient.js';
+import { supabase } from '../lib/supabaseClient';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ThemeProvider } from '../context/themeContext.jsx';
-import Container from '../components/container/Container.jsx';
+import Container from '../components/container/Container';
 
 // queryClient handles caching, garbage collection, fetching, etc
 const queryClient = new QueryClient();

@@ -1,6 +1,6 @@
 // mutations are used to create/update/delete data or perform server side-effects
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { supabase } from '../lib/supabaseClient.js';
+import { supabase } from '../lib/supabaseClient';
 
 // add a burn - POST request
 export const addBurn = async (burn) => {
