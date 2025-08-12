@@ -9,17 +9,17 @@ import Container from '../components/container/Container.jsx';
 const queryClient = new QueryClient();
 
 export default function Feed() {
-  const [session, setSession] = useState(null); // may want to put this in a context
+  const [session, setSession] = useState(null); // may want to put this in a context + fix the type for session
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
+      setSession(session as any);
     });
 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
+      setSession(session as any);
     });
 
     return () => subscription.unsubscribe();
