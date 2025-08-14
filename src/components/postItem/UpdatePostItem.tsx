@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './postItem.scss';
 import { useFetchBurn } from '../../hooks/fetchQuery.jsx';
 import { useUpdateBurn } from '../../hooks/fetchMutations.jsx';
+import './postItem.scss';
 
 // TODO: probably want to debounce this input change
 
@@ -35,7 +35,7 @@ function UpdatePostItem({ id, open }) {
   }
 
   if (error) {
-    return <div>Error fetching data {error}</div>; // Handle error state
+    return <div>Error fetching data {error as any}</div>; // TODO: Handle error state
   }
 
   return (

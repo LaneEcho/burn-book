@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { ThemeProvider } from '../context/themeContext.jsx';
+import { ThemeProvider } from '../context/themeContext';
 import Container from '../components/container/Container';
 
 // queryClient handles caching, garbage collection, fetching, etc

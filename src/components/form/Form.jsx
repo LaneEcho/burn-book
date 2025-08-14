@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import { useTheme } from '../../context/themeContext.jsx';
-import { useAuth } from '../../context/authContext.jsx';
+import { useTheme } from '../../context/themeContext';
+import { useAuth } from '../../context/authContext';
 import { useAddBurn } from '../../hooks/fetchMutations.jsx';
 import './form.scss';
 

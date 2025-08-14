@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDeleteBurn } from '../../hooks/fetchMutations.jsx';
-import UpdatePostItem from './UpdatePostItem.jsx';
-import { useAuth } from '../../context/authContext.jsx';
+import UpdatePostItem from './UpdatePostItem';
+import { useAuth } from '../../context/authContext';
 import '../form/Form.jsx';
 import './postItem.scss';
 
