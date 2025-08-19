@@ -4,9 +4,12 @@ import { useAuth } from '../../context/authContext';
 import { useAddBurn } from '../../hooks/fetchMutations';
 import './form.scss';
 
-function debounce(callback, waitTime) {
+function debounce(
+  callback: any, // fix this
+  waitTime: number
+) {
   let timeoutId;
-  return function (...args) {
+  return function (...args: any) {
     clearTimeout(timeoutId);
     // call the callback in the proper context (this) with the correct arguments (args)
     // callback function is executed in the same context it was originally called from
@@ -14,7 +17,7 @@ function debounce(callback, waitTime) {
   };
 }
 
-function FormComponent(props) {
+function FormComponent() {
   const [comment, setComment] = useState('');
   const [disabled, setDisabled] = useState(true);
 
@@ -39,7 +42,7 @@ function FormComponent(props) {
 
   // debounced version of handleChange with 400ms delay
   const debouncedHandleChange = useCallback(
-    debounce((value) => {
+    debounce((value: string) => {
       // submit button becomes active
       if (value.trim() !== '') {
         setDisabled(false);
@@ -49,7 +52,7 @@ function FormComponent(props) {
   );
 
   // update the input field and debounce actions
-  const handleChange = (event) => {
+  const handleChange = (event: { target: { value: any } }) => {
     const value = event.target.value;
     // update the input field immediately for user feedback
     setComment(value);

@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { supabase } from '../../lib/supabaseClient';
-import LinkButton from '../../components/ui/button/LinkButton.jsx';
+import LinkButton from '../../components/ui/button/LinkButton';
 
 // TODO:
 // add validation
 // make not ugly
 // handle errors
+
+type FormValues = {
+  username: string;
+  email: string;
+  phone: string;
+  password: string;
+};
 
 export default function SignUp() {
   const [loading, setLoading] = useState(false);
@@ -20,11 +27,11 @@ export default function SignUp() {
 
     const formData = new FormData(event.target);
 
-    const formValues = {
-      username: formData.get('username'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-      password: formData.get('password'),
+    const formValues: FormValues = {
+      username: formData.get('username') as string,
+      email: formData.get('email') as string,
+      phone: formData.get('phone') as string,
+      password: formData.get('password') as string,
     };
 
     const { error } = await supabase.auth.signUp({
@@ -98,9 +105,7 @@ export default function SignUp() {
           </button>
         </div>
       </form>
-      <LinkButton to={'/'} disabled={loading}>
-        Nevermind
-      </LinkButton>
+      <LinkButton to={'/'}>Nevermind</LinkButton>
     </>
   );
 }

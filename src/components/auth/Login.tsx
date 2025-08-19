@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import LinkButton from '../../components/ui/button/LinkButton.jsx';
+import LinkButton from '../../components/ui/button/LinkButton';
 import { useNavigate } from 'react-router';
 import { supabase } from '../../lib/supabaseClient';
 
@@ -7,6 +7,11 @@ import { supabase } from '../../lib/supabaseClient';
 // make not ugly
 // handle errors
 // could do phone OR email
+
+type FormValues = {
+  email: string;
+  password: string;
+};
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -20,9 +25,9 @@ export default function Login() {
 
     const formData = new FormData(event.target);
 
-    const formValues = {
-      email: formData.get('email'),
-      password: formData.get('password'),
+    const formValues: FormValues = {
+      email: formData.get('email') as string,
+      password: formData.get('password') as string,
     };
 
     const { error } = await supabase.auth.signInWithPassword({

@@ -4,22 +4,23 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ThemeProvider } from '../context/themeContext';
 import Container from '../components/container/Container';
+import { Session } from '@supabase/supabase-js';
 
 // queryClient handles caching, garbage collection, fetching, etc
 const queryClient = new QueryClient();
 
 export default function Feed() {
-  const [session, setSession] = useState(null); // may want to put this in a context + fix the type for session
+  const [session, setSession] = useState<Session | null>(null); // may want to put this in a context
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session as any);
+      setSession(session);
     });
 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session as any);
+      setSession(session);
     });
 
     return () => subscription.unsubscribe();
