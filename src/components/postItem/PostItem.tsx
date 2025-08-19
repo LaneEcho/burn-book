@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDeleteBurn } from '../../hooks/fetchMutations';
 import UpdatePostItem from './UpdatePostItem';
 import { useAuth } from '../../context/authContext';
-import '../form/Form.jsx';
+import '../form/Form';
 import './postItem.scss';
 
 function PostItem({ id, comment, username }) {

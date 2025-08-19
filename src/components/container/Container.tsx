@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTheme } from '../../context/themeContext';
 import { useFetchBurns } from '../../hooks/fetchQuery';
-import FormComponent from '../form/Form.jsx';
+import FormComponent from '../form/Form';
 import PostItem from '../postItem/PostItem';
 import Profile from '../profile/Profile.jsx';
 import IconButton from '@mui/material/IconButton';

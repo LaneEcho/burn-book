@@ -4,7 +4,6 @@ import { useAuth } from '../../context/authContext';
 import { useAddBurn } from '../../hooks/fetchMutations';
 import './form.scss';
 
-// declare a function to debounce
 function debounce(callback, waitTime) {
   let timeoutId;
   return function (...args) {
@@ -17,14 +16,13 @@ function debounce(callback, waitTime) {
 
 function FormComponent(props) {
   const [comment, setComment] = useState('');
-  const [message, setMessage] = useState('');
   const [disabled, setDisabled] = useState(true);
 
   const { darkMode } = useTheme();
 
   const { user } = useAuth();
 
-  const { mutate, isLoading } = useAddBurn();
+  const { mutate, isPending } = useAddBurn();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -69,7 +67,7 @@ function FormComponent(props) {
   }
 
   // add component later for visual feedback while waiting for promise to resolve
-  if (isLoading) {
+  if (isPending) {
     return <div className="loading">Loading...</div>;
   }
 
