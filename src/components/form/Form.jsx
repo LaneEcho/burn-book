@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useTheme } from '../../context/themeContext';
 import { useAuth } from '../../context/authContext';
-import { useAddBurn } from '../../hooks/fetchMutations.jsx';
+import { useAddBurn } from '../../hooks/fetchMutations';
 import './form.scss';
 
 // declare a function to debounce

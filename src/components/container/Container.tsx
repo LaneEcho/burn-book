@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '../../context/themeContext';
-import { useFetchBurns } from '../../hooks/fetchQuery.jsx';
+import { useFetchBurns } from '../../hooks/fetchQuery';
 import FormComponent from '../form/Form.jsx';
 import PostItem from '../postItem/PostItem';
 import Profile from '../profile/Profile.jsx';

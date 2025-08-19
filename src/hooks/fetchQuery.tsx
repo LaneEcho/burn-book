@@ -5,15 +5,19 @@ import { useQuery } from '@tanstack/react-query';
 
 // fetch burns - GET request
 export const fetchBurns = async () => {
-  const response = await fetch('/getBurns');
+  try {
+    const response = await fetch('/getBurns');
 
-  if (!response.ok) {
-    throw new Error(`HTTP error! Status: ${response.status}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error('Error in fetchBurns:', error);
   }
-
-  const data = await response.json();
-
-  return data;
 };
 
 export const useFetchBurns = () => {
@@ -27,19 +31,23 @@ export const useFetchBurns = () => {
 };
 
 // fetch one burn - GET request
-export const fetchBurn = async (id) => {
-  const response = await fetch(`/getBurns/${id}`);
+export const fetchBurn = async (id: string) => {
+  try {
+    const response = await fetch(`/getBurns/${id}`);
 
-  if (!response.ok) {
-    throw new Error(`HTTP error! Status: ${response.status}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error in fetchBurn! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error('Error in fetchBurn:', error);
   }
-
-  const data = await response.json();
-
-  return data;
 };
 
-export const useFetchBurn = (id) => {
+export const useFetchBurn = (id: string) => {
   return useQuery({
     queryKey: ['burn', id],
     queryFn: () => fetchBurn(id),

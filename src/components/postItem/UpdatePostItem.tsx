@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useFetchBurn } from '../../hooks/fetchQuery.jsx';
-import { useUpdateBurn } from '../../hooks/fetchMutations.jsx';
+import { useFetchBurn } from '../../hooks/fetchQuery';
+import { useUpdateBurn } from '../../hooks/fetchMutations';
 import './postItem.scss';
 
 // TODO: probably want to debounce this input change
