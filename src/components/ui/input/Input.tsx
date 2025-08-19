@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
+import React, { ChangeEventHandler, ComponentProps, useState } from 'react';
 import './input.scss';
+
+interface IputProps extends ComponentProps<'input'> {
+  label: string;
+  error?: string;
+}
 
 const Input = ({
   label,
@@ -10,15 +15,14 @@ const Input = ({
   required,
   pattern,
   error,
-  onChange,
-}) => {
+}: IputProps) => {
   const [focused, setFocused] = useState(false);
 
-  const handleFocus = (e) => {
+  const handleFocus = (_event: React.FocusEvent<HTMLInputElement>) => {
     setFocused(true);
   };
 
-  const handleInput = (e) => {
+  const handleInput = (_event: React.FocusEvent<HTMLInputElement>) => {
     setFocused(false);
   };
 
@@ -33,11 +37,10 @@ const Input = ({
         placeholder={placeholder}
         required={required}
         pattern={pattern}
-        onChange={onchange}
         onBlur={handleFocus}
         onFocus={handleInput}
       />
-      {isInvalid && <span>{error}</span>}
+      {error && <span>{error}</span>}
     </>
   );
 };

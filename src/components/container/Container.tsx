@@ -3,7 +3,7 @@ import { useTheme } from '../../context/themeContext';
 import { useFetchBurns } from '../../hooks/fetchQuery';
 import FormComponent from '../form/Form';
 import PostItem from '../postItem/PostItem';
-import Profile from '../profile/Profile.jsx';
+import Profile from '../profile/Profile';
 import IconButton from '@mui/material/IconButton';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
