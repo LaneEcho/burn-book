@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { JSX, useState } from 'react';
 import { useDeleteBurn } from '../../hooks/fetchMutations';
 import UpdatePostItem from './UpdatePostItem';
 import { useAuth } from '../../context/authContext';
 import '../form/Form';
 import './postItem.scss';
 
-function PostItem({ id, comment, username }) {
+interface PostItemType {
+  id: string;
+  comment: string;
+  username: string;
+}
+
+function PostItem({ id, comment, username }: PostItemType): JSX.Element {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [modalState, setModalState] = useState(false);
@@ -42,14 +48,12 @@ function PostItem({ id, comment, username }) {
       <p>{comment}</p>
       <p className="username">@{username}</p>
 
-      <>
-        <button className="edit-button" onClick={handleUpdate}>
-          edit
-        </button>
-        <button className="secondary-button" onClick={handleDelete}>
-          delete
-        </button>
-      </>
+      <button className="edit-button" onClick={handleUpdate}>
+        edit
+      </button>
+      <button className="secondary-button" onClick={handleDelete}>
+        delete
+      </button>
 
       {modalState && <UpdatePostItem id={id} open={setModalState} />}
     </div>

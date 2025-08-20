@@ -23,10 +23,17 @@ export default defineConfig(
       rules: {
         'no-unused-vars': 'warn',
         '@typescript-eslint/no-unused-vars': 'warn',
-        '@typescript-eslint/no-require-imports': 'warn',
         'no-undef': 'warn',
         'react/prop-types': 'off',
       },
+      overrides: [
+        {
+          files: ['src/server/*.js'],
+          rules: {
+            '@typescript-eslint/no-require-imports': 'off',
+          },
+        },
+      ],
     },
     {
       // Note: there should be no other properties in this object

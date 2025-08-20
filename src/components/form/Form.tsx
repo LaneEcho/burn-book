@@ -3,6 +3,7 @@ import { useTheme } from '../../context/themeContext';
 import { useAuth } from '../../context/authContext';
 import { useAddBurn } from '../../hooks/fetchMutations';
 import './form.scss';
+import { BurnData } from '../../types/types';
 
 function debounce(
   callback: any, // fix this
@@ -31,7 +32,7 @@ function FormComponent() {
     event.preventDefault();
 
     if (comment.trim() !== '') {
-      mutate({ message: comment });
+      mutate({ message: comment } as BurnData);
       setComment('');
       setDisabled(true);
     } else {

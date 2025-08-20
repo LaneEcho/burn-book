@@ -1,14 +1,17 @@
 // mutations are used to create/update/delete data or perform server side-effects
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '../lib/supabaseClient';
+import { BurnData } from '../types/types';
 
 // add a burn - POST request
-export const addBurn = async (burn: any) => {
-  const { data } = await supabase.auth.getSession();
-
-  if (!data.session) return null;
-
+export const addBurn = async (burn: BurnData): Promise<string> => {
   try {
+    const { data, error } = await supabase.auth.getSession();
+
+    if (!data.session) {
+      throw new Error(error?.message || 'No active Supabase session');
+    }
+
     const res = await fetch('/getBurns', {
       method: 'POST',
       headers: {
@@ -22,9 +25,10 @@ export const addBurn = async (burn: any) => {
       throw new Error(`Error in addBurn! Status: ${res.status}`);
     }
 
-    return res.json;
+    return res.json();
   } catch (error) {
     console.error('Error in addBurn:', error);
+    throw error;
   }
 };
 
@@ -41,10 +45,12 @@ export const useAddBurn = () => {
 };
 
 // update a burn - PATCH request
-export const updateBurn = async (burn: any) => {
-  const { data } = await supabase.auth.getSession();
+export const updateBurn = async (burn: Partial<BurnData>) => {
+  const { data, error } = await supabase.auth.getSession();
 
-  if (!data.session) return null;
+  if (!data.session) {
+    throw new Error(error?.message || 'No active Supabase session');
+  }
 
   try {
     const res = await fetch(`getBurns/${burn.id}`, {
@@ -60,9 +66,10 @@ export const updateBurn = async (burn: any) => {
       throw new Error(`Error in updateBurn! Status: ${res.status}`);
     }
 
-    return res.json;
+    return res.json();
   } catch (error) {
     console.error('Error in updateBurn:', error);
+    throw error;
   }
 };
 
@@ -79,7 +86,7 @@ export const useUpdateBurn = () => {
 };
 
 // delete a burn - DELETE request
-export const deleteBurn = async (burn: any) => {
+export const deleteBurn = async (burn: Partial<BurnData>) => {
   const { data } = await supabase.auth.getSession();
 
   if (!data.session) return null;
@@ -100,6 +107,7 @@ export const deleteBurn = async (burn: any) => {
     return;
   } catch (error) {
     console.error('Error in deleteBurn:', error);
+    throw error;
   }
 };
 

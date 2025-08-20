@@ -1,10 +1,11 @@
 // useQuery to make API call and cache response
 import { useQuery } from '@tanstack/react-query';
+import { BurnData } from '../types/types';
 
 // query is a declarative dependency on an asynchronous source of data that is tied to a unique key
 
 // fetch burns - GET request
-export const fetchBurns = async () => {
+export const fetchBurns = async (): Promise<BurnData[]> => {
   try {
     const response = await fetch('/getBurns');
 
@@ -17,6 +18,7 @@ export const fetchBurns = async () => {
     return data;
   } catch (error) {
     console.error('Error in fetchBurns:', error);
+    throw error;
   }
 };
 
@@ -31,7 +33,7 @@ export const useFetchBurns = () => {
 };
 
 // fetch one burn - GET request
-export const fetchBurn = async (id: string) => {
+export const fetchBurn = async (id: string): Promise<BurnData> => {
   try {
     const response = await fetch(`/getBurns/${id}`);
 
@@ -44,6 +46,7 @@ export const fetchBurn = async (id: string) => {
     return data;
   } catch (error) {
     console.error('Error in fetchBurn:', error);
+    throw error;
   }
 };
 

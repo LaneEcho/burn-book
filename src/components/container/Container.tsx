@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { JSX } from 'react';
 import { useTheme } from '../../context/themeContext';
 import { useFetchBurns } from '../../hooks/fetchQuery';
 import FormComponent from '../form/Form';
@@ -14,7 +14,7 @@ function Container() {
 
   const { darkMode, toggleTheme } = useTheme();
 
-  const allItems: any[] = []; // TODO: Fix type or handle error better
+  const allItems: JSX.Element[] = []; // TODO: Fix type or handle error better
 
   if (error) {
     allItems.push(
@@ -25,7 +25,7 @@ function Container() {
     );
   }
 
-  if (!isLoading && data !== null) {
+  if (!isLoading && data) {
     for (let i = 0; i < data.length; i++) {
       allItems.push(
         <PostItem
