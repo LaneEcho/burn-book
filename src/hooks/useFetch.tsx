@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 
-function useFetch(url) {
+// this is a hook to handle fetch but it is not being used
+
+function useFetch(url: string) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);

@@ -1,13 +1,16 @@
 import React, { useState, useCallback } from 'react';
-import { useTheme } from '../../context/themeContext.jsx';
-import { useAuth } from '../../context/authContext.jsx';
-import { useAddBurn } from '../../hooks/fetchMutations.jsx';
+import { useTheme } from '../../context/themeContext';
+import { useAuth } from '../../context/authContext';
+import { useAddBurn } from '../../hooks/fetchMutations';
 import './form.scss';
+import { BurnData } from '../../types/types';
 
-// declare a function to debounce
-function debounce(callback, waitTime) {
+function debounce(
+  callback: any, // fix this
+  waitTime: number
+) {
   let timeoutId;
-  return function (...args) {
+  return function (...args: any) {
     clearTimeout(timeoutId);
     // call the callback in the proper context (this) with the correct arguments (args)
     // callback function is executed in the same context it was originally called from
@@ -15,22 +18,21 @@ function debounce(callback, waitTime) {
   };
 }
 
-function FormComponent(props) {
+function FormComponent() {
   const [comment, setComment] = useState('');
-  const [message, setMessage] = useState('');
   const [disabled, setDisabled] = useState(true);
 
   const { darkMode } = useTheme();
 
   const { user } = useAuth();
 
-  const { mutate, isLoading } = useAddBurn();
+  const { mutate, isPending } = useAddBurn();
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (comment.trim() !== '') {
-      mutate({ message: comment });
+      mutate({ message: comment } as BurnData);
       setComment('');
       setDisabled(true);
     } else {
@@ -41,7 +43,7 @@ function FormComponent(props) {
 
   // debounced version of handleChange with 400ms delay
   const debouncedHandleChange = useCallback(
-    debounce((value) => {
+    debounce((value: string) => {
       // submit button becomes active
       if (value.trim() !== '') {
         setDisabled(false);
@@ -51,7 +53,7 @@ function FormComponent(props) {
   );
 
   // update the input field and debounce actions
-  const handleChange = (event) => {
+  const handleChange = (event: { target: { value: any } }) => {
     const value = event.target.value;
     // update the input field immediately for user feedback
     setComment(value);
@@ -69,7 +71,7 @@ function FormComponent(props) {
   }
 
   // add component later for visual feedback while waiting for promise to resolve
-  if (isLoading) {
+  if (isPending) {
     return <div className="loading">Loading...</div>;
   }
 

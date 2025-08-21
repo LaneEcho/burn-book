@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { useAuth } from '../../context/authContext.jsx';
+import { useAuth } from '../../context/authContext';
 import './profile.scss';
 
 const Profile = () => {

@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import FormComponent from '../form/Form.jsx';
-import PostItem from '../postItem/PostItem.jsx';
-import Profile from '../profile/Profile.jsx';
-import { useTheme } from '../../context/themeContext.jsx';
+import React, { JSX } from 'react';
+import { useTheme } from '../../context/themeContext';
+import { useFetchBurns } from '../../hooks/fetchQuery';
+import FormComponent from '../form/Form';
+import PostItem from '../postItem/PostItem';
+import Profile from '../profile/Profile';
 import IconButton from '@mui/material/IconButton';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import './container.scss';
-import { useFetchBurns } from '../../hooks/fetchQuery.jsx';
 
 function Container() {
   const { isLoading, error, data } = useFetchBurns();
 
   const { darkMode, toggleTheme } = useTheme();
 
-  const allItems = [];
+  const allItems: JSX.Element[] = []; // TODO: Fix type or handle error better
 
   if (error) {
     allItems.push(
@@ -25,7 +25,7 @@ function Container() {
     );
   }
 
-  if (!isLoading && data !== null) {
+  if (!isLoading && data) {
     for (let i = 0; i < data.length; i++) {
       allItems.push(
         <PostItem
@@ -33,7 +33,6 @@ function Container() {
           key={i}
           id={data[i].id}
           username={data[i].username}
-          onDelete={() => handleDelete(i)}
         />
       );
     }

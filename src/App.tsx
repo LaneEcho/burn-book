@@ -1,12 +1,12 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
-import { AuthProvider } from './context/authContext.jsx';
-import Feed from './Pages/Feed.jsx';
-import LoginPage from './Pages/LoginPage.jsx';
-import SignUpPage from './Pages/SignUpPage.jsx';
-import ForgotPasswordPage from './Pages/PasswordPage.jsx';
-import ErrorPage from './Pages/ErrorPage.jsx';
+import { AuthProvider } from './context/authContext';
+import Feed from './Pages/Feed';
+import LoginPage from './Pages/LoginPage';
+import SignUpPage from './Pages/SignUpPage';
+import ForgotPasswordPage from './Pages/PasswordPage';
+import ErrorPage from './Pages/ErrorPage';
 import './App.scss';
 
 const router = createBrowserRouter([
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
 ]);
 
 const container = document.getElementById('app');
-const root = createRoot(container); // createRoot(container!) if you use TypeScript
+const root = createRoot(container!);
 
 root.render(
   <AuthProvider>

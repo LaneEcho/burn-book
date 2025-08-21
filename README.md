@@ -20,10 +20,19 @@ What if The Plastics had an app for their Burn Book, instead of a physical book?
 
 ### Tech Stack
 
-<br>
-
-[![JavaScript][JavaScript]][JavaScript-url] [![React][React.js]][React-url] ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) [![HTML5][HTML5]][HTML5-url] [![SASS][SASS]][SASS-url] ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black) ![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)
-![React-Query](https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=ReactQuery&logoColor=white)![React-Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+[![JavaScript][JavaScript]][JavaScript-url]
+[![React][React.js]][React-url]
+![React-Query](https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=ReactQuery&logoColor=white)
+![React-Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)
+[![HTML5][HTML5]][HTML5-url]
+[![SASS][SASS]][SASS-url]
+![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
+![ESLint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
+![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)
 
 ### Prerequisites
 
@@ -67,9 +76,9 @@ _Coming soon_!
 | Write server with Express               | ✅     |
 | Update                                  | ✅     |
 | Delete                                  | ✅     |
-| Query/ Cache Asynchronous State         | ⏳     |
+| Convert to TypeScript                   | ✅     |
+| TanStack Query                          | ✅     |
 | Testing w/ Jest + React Testing Library | ⏳     |
-| Convert to TypeScript                   | ⏳     |
 | Image uploads                           | ⏳     |
 | And more...                             | ⏳     |
 

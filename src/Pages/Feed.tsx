@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabaseClient.js';
+import { supabase } from '../lib/supabaseClient';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { ThemeProvider } from '../context/themeContext.jsx';
-import Container from '../components/container/Container.jsx';
+import { ThemeProvider } from '../context/themeContext';
+import Container from '../components/container/Container';
+import { Session } from '@supabase/supabase-js';
 
 // queryClient handles caching, garbage collection, fetching, etc
 const queryClient = new QueryClient();
 
 export default function Feed() {
-  const [session, setSession] = useState(null); // may want to put this in a context
+  const [session, setSession] = useState<Session | null>(null); // may want to put this in a context
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {

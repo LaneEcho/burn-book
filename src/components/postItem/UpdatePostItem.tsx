@@ -1,11 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  useEffect,
+  JSX,
+  SetStateAction,
+  Dispatch,
+} from 'react';
+import { useFetchBurn } from '../../hooks/fetchQuery';
+import { useUpdateBurn } from '../../hooks/fetchMutations';
 import './postItem.scss';
-import { useFetchBurn } from '../../hooks/fetchQuery.jsx';
-import { useUpdateBurn } from '../../hooks/fetchMutations.jsx';
 
 // TODO: probably want to debounce this input change
+// TODO: Handle error state
 
-function UpdatePostItem({ id, open }) {
+interface UpdatePostItemType {
+  id: string;
+  open: Dispatch<SetStateAction<boolean>>;
+}
+
+function UpdatePostItem({ id, open }: UpdatePostItemType): JSX.Element {
   const [comment, setComment] = useState('');
 
   const { isLoading, error, data } = useFetchBurn(id);
@@ -24,7 +36,7 @@ function UpdatePostItem({ id, open }) {
   const handleUpdate = async (event) => {
     event.preventDefault();
 
-    mutate({ message: comment, id: data.id });
+    mutate({ message: comment, id: data?.id });
 
     // we have got to refactor this so we can close the modal
     open(false);
@@ -35,7 +47,7 @@ function UpdatePostItem({ id, open }) {
   }
 
   if (error) {
-    return <div>Error fetching data {error}</div>; // Handle error state
+    return <div>Error fetching data {error as any}</div>;
   }
 
   return (
